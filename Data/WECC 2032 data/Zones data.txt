@@ -1,0 +1,522 @@
+zone data  [ 521]                            pnet     qnet
+  100 "PNM: EHV and Gen                " 1761.238  -31.819 0 
+  101 "PNM: Albuquerque                " -890.489   80.496 0 
+  102 "PNM: Belen                      " -274.967   -0.685 0 
+  103 "PNM: Sandoval                   " -292.750 -112.624 0 
+  104 "PNM: Deming                     "  -25.778   15.973 0 
+  105 "PNM: Las Vegas NM               "    0.739   -1.326 0 
+  106 "PNM: Santa Fe                   " -168.949   54.813 0 
+  107 "PNM: Northwestern               "  -17.786    0.368 0 
+  108 "PNM: Other                      "  -85.861    1.450 0 
+  109 "PNM: Clayton NM                 "   -4.350   -1.392 0 
+  110 "EPE - Native Load               " -624.022   46.327 0 
+  111 "EPE - ZoneHO                    "    0.000    0.000 0 
+  112 "EPE - ZoneCK                    "    0.000    0.000 0 
+  113 "EPE - ZoneLK                    "    0.000    0.000 0 
+  114 "EPE - ZoneMV                    "    0.000    0.000 0 
+  116 "EPE - ZoneE                     "    0.000   -0.000 0 
+  117 "ZoneJZ                          "    0.000    0.000 0 
+  120 "TSGT: Central NM                "  -52.824   -1.335 0 
+  121 "TSGT: North NM                  " -208.347   64.755 0 
+  122 "TSGT: Western NM                "  -65.614  -22.404 0 
+  123 "TSGT: Southern NM               "   14.615   16.137 0 
+  130 "PNM: Southeast                  "  -73.867   24.117 0 
+  131 "PNM: SNM Mining                 "  -91.730  -19.890 0 
+  132 "PNM: Southwest                  "  -38.861   20.708 0 
+  133 "Los Alamos County               "  -93.279   31.838 0 
+  134 "SPS                             "  -15.000  -56.421 0 
+  135 "USBR NM                         "    0.000    0.000 0 
+  136 "Western Interconnect NM         "   29.561    6.766 0 
+  140 "JOINT LOAD                      "    0.000    0.000 0 
+  141 "APS                             " 8788.169 1763.617 0 
+  142 "APS: Metro Downtown             " -697.459 -257.755 0 
+  143 "APS: Metro East                 " -1316.830 -131.443 0 
+  144 "APS: Metro Central              " -1074.949 -147.511 0 
+  145 "APS: Metro North                " -301.074  -12.725 0 
+  146 "APS: Metro Western              " -1030.962 -109.275 0 
+  147 "APS: Goodyear                   " -583.171  -46.296 0 
+  148 "APS: APS BUCKEYE/GILA BEND      " -196.941    9.291 0 
+  149 "APS: White Tanks                "  -17.012   -6.170 0 
+  160 "TEP                             " -161.501  318.564 0 
+  161 "UES (Nogales)                   "  -50.062    8.677 0 
+  162 "UES (Kingman)                   "  -51.345  -43.107 0 
+  163 "UES (Havasu)                    " -227.446  -47.974 0 
+  164 "FMI(TEP)                        " -405.259  -33.946 0 
+  165 "Navopache                       "  -87.919  -18.358 0 
+  166 "TEP LOADSHED ZONE               "    0.000    0.000 0 
+  169 "OSO Grande                      "   32.429  -14.885 0 
+  170 "AEPCO                           "  404.909  -31.611 0 
+  171 "AEPCO: Trico                    " -241.574  -17.238 0 
+  172 "AEPCO: SSVEC                    " -166.650    3.900 0 
+  173 "AEPCO: MEC                      " -233.932  -57.881 0 
+  174 "AEPCO: Graham/Duncan            "  -89.247  -20.891 0 
+  175 "Trico                           "    0.000    0.000 0 
+  176 "SSVEC                           "    0.000    0.000 0 
+  177 "MEC                             "    0.000    0.000 0 
+  178 "Graham/Duncan                   "    0.000    0.000 0 
+  179 "CAP                             " -106.400    0.000 0 
+  181 "ZoneN1                          " 3285.944  340.729 0 
+  182 "ZoneN2                          " 1703.664 -603.636 0 
+  183 "ZoneN3                          " -2082.482 -199.731 0 
+  184 "ZoneN4                          " -833.586  -85.826 0 
+  185 "ZoneN5                          " -2158.738 -433.852 0 
+  186 "ZoneN6                          " -914.880  -73.573 0 
+  187 "ZoneN7                          "  -46.110  -15.754 0 
+  188 "ZoneN8                          " -153.732  -58.931 0 
+  189 "Valley Electric Association     "    0.000    0.000 0 
+  191 "WAPA-DSW                        " 3052.547  347.989 0 
+  199 "FUES                            "    0.000    0.000 0 
+  203 "ZoneTJ                          "  320.253  -35.066 0 
+  204 "ZoneMX                          " -275.508  153.864 0 
+  205 "ZoneEN                          "   16.993    4.459 0 
+  206 "ZoneSN                          " -328.499  -63.811 0 
+  207 "ZoneTCT                         "  -83.637  -14.277 0 
+  210 "Zone15                          "    0.000    0.000 0 
+  211 "Non-Load                        "    0.000    0.000 0 
+  212 "IID Coachella Valley Area       " -510.987   55.557 0 
+  213 "IID Imperial Valley Area        " 1256.644  -21.405 0 
+  214 "IID IPP Fed Load                "    0.000    0.000 0 
+  215 "IID IPP Reroutable Gen & Load   "    0.000    0.000 0 
+  216 "IID Internal Tie                "    0.000    0.000 0 
+  221 "SDG&E Beach Cities              " -943.717  138.443 0 
+  222 "SDG&E Construction Metro        "  168.964   74.933 0 
+  223 "SDG&E Eastern                   " -628.476  -31.962 0 
+  224 "SDG&E North Coast               " -191.518   57.414 0 
+  225 "SDG&E Northeast                 " -112.310  -16.840 0 
+  226 "SDG&E Orange County             " -404.792  138.528 0 
+  227 "SDG&E Bulk Power                " 1653.265 -254.188 0 
+  228 "SDG&E                           "    0.000    0.000 0 
+  229 "SDG&E                           "    0.000    0.000 0 
+  240 "SCE MAIN SYSTEM                 "  -91.628 -348.964 0 
+  241 "SCE Los Angeles Basin 230kV     " -9016.991 -138.022 0 
+  242 "City of Pasadena                " -218.648  -30.351 0 
+  243 "SCE Orange County               " -2030.254   34.047 0 
+  244 "City of Anaheim                 " -265.883   10.230 0 
+  250 "SCE NORTHERN 500kV              "  -12.527   66.757 0 
+  251 "SCE North of Magunden 230kV     "  111.375  104.472 0 
+  252 "SCE South of Magunden 230kV     "  513.453 -190.195 0 
+  253 "SCE Windhub 230kV               " 2241.723  -88.048 0 
+  254 "SCE Whirlwind 230kV             " 1592.372  -76.537 0 
+  255 "SCE Sagebrush (Vincent) 230kV   "  240.976   13.310 0 
+  257 "SCE Antelope/Bailey             " -500.174  105.320 0 
+  259 "SCE Ventura/Santa Barbara       " -1554.509  206.638 0 
+  260 "City of Los Angeles             " -271.802 -1386.515 0 
+  261 "BURBANK                         "  -23.450  -75.117 0 
+  263 "City of Glendale                " -223.438  -22.333 0 
+  264 "Intermountain Power Agency      "    0.000    0.000 0 
+  265 "City of Los Angeles-GS          "    0.000    0.000 0 
+  270 "LA Contracts                    "    0.000    0.000 0 
+  275 "IPP Wind                        "   79.666  -94.719 0 
+  280 "ZonePP                          "    0.000    0.000 0 
+  281 "LA BASIN                        " 1682.543  385.039 0 
+  282 "LA PDCI                         "    0.000 1419.604 0 
+  283 "LA IPP                          " 1731.925   99.430 0 
+  284 "LA OVES                         "  635.865   15.478 0 
+  285 "LA SUB-TRANS                    " -5499.988 -498.533 0 
+  286 "LA EASTERN-AC                   "  858.564 1467.118 0 
+  290 "NONCNFRM                        "    0.000    0.000 0 
+  295 "MIDPOINT                        "    0.000    0.000 0 
+  300 "Intertie                        " -211.389 1466.835 0 
+  301 "Conf Load (Humboldt)            "   41.512  -33.159 0 
+  302 "Conf Load (N. Coast)            " -117.989  244.844 0 
+  303 "Conf Load (N. Valley)           " 1222.101 -199.770 0 
+  304 "Conf Load (Sacramento)          "   44.675 -140.135 0 
+  305 "Conf Load (Sierra)              " -289.911 -210.431 0 
+  306 "Conf Load (North Bay)           " -656.260 -214.343 0 
+  307 "Conf Load (East Bay)            " -699.481  -68.232 0 
+  308 "Conf Load (Diablo)              "   65.730 -124.498 0 
+  309 "Conf Load (S.F.)                " -901.543  423.424 0 
+  310 "Conf Load (Peninsula)           " -994.512  151.780 0 
+  311 "Conf Load (Stockton)            " -583.214 -442.234 0 
+  312 "Conf Load (Stanislaus)          "   18.179  -38.632 0 
+  313 "Conf Load (Yosemite)            "  468.999  -22.702 0 
+  314 "Conf Load (Fresno)              "  639.190 -336.141 0 
+  315 "Conf Load (Kern)                " 1391.835 -296.861 0 
+  316 "Conf Load (Mission)             " -1040.026   45.080 0 
+  317 "Conf Load (De Anza)             " -962.405 -149.464 0 
+  318 "Conf Load (San Jose)            " -1079.506    0.723 0 
+  319 "Conf Load (Central Coast)       " 1003.275 -400.454 0 
+  320 "Conf Load (Los Padres)          " 2221.578  151.097 0 
+  321 "Conf Load (Silicon Valley Power)" -620.396 -150.497 0 
+  322 "Conf Load (SMUD)                " -941.364  300.828 0 
+  323 "Conf Load (MID)                 " -468.290   30.563 0 
+  324 "Conf Load (TID)                 " -198.405   50.799 0 
+  325 "Conf Load (Western)             " 1718.329 -272.998 0 
+  326 "Conf Load (LMUD)                "    4.513   -4.784 0 
+  327 "Conf Load (CDWR)                "  146.654  130.644 0 
+  328 "Conf Load (NCPA)                "  103.090   27.048 0 
+  329 "Conf Load (Redding)             " -119.011   31.142 0 
+  330 "Roseville                       " -188.178  -57.282 0 
+  331 "Non-Conf Load (Humboldt)        "    0.000    0.000 0 
+  332 "Non-conf Load (N. Coast)        "    0.000    0.000 0 
+  333 "Non-conf Load (N. Valley)       "    0.000    0.000 0 
+  334 "Non-conf Load (Sacramento)      "    0.000    0.000 0 
+  335 "Non-conf Load (Sierra)          "    0.000    0.000 0 
+  336 "Non-conf Load (North Bay)       "    0.000    0.000 0 
+  337 "Non-conf Load (East Bay)        "    0.000    0.000 0 
+  338 "Non-conf Load (Diablo)          "    0.000    0.000 0 
+  339 "Non-conf Load (S.F.)            "    0.000    0.000 0 
+  340 "Non-conf Load (Peninsula)       "    0.000    0.000 0 
+  341 "Non-conf Load (stockton)        "    0.000    0.000 0 
+  342 "Non-conf Load (Stanislaus)      "    0.000    0.000 0 
+  343 "Non-conf Load (Yosemite)        "    0.000    0.000 0 
+  344 "Non-conf Load (Fresno)          "    0.000    0.000 0 
+  345 "Non-conf Load (Kern)            "    0.000    0.000 0 
+  346 "Non-conf Load (Mission)         "    0.000    0.000 0 
+  347 "Non-conf Load (De Anza)         " -120.006   -0.003 0 
+  348 "Non-conf Load (San Jose)        "   -6.030   -1.196 0 
+  349 "Non-conf Load (Central Coast)   "    0.000    0.000 0 
+  350 "Non-conf Load (Los Padres)      "    0.000    0.000 0 
+  351 "City of Pittsburg               "  -22.041 -106.826 0 
+  352 "Non-conf Load (SMUD)            "    0.000    0.000 0 
+  353 "DG Non-Assessment               "    0.000    0.000 0 
+  354 "Energy Storage                  "    0.000    0.000 0 
+  355 "Solar PV                        "    0.000    0.000 0 
+  357 "City and County of San Francisco"  329.722  -48.491 0 
+  359 "Non-conf Load (Redding)         "    0.000    0.000 0 
+  360 "Generation Plant Load           "    0.000    0.000 0 
+  361 "Generation (Fossil & Non-peaker "    0.000    0.000 0 
+  362 "Generation (Combustion Turbine) "    0.000    0.000 0 
+  363 "Generation (Geothermal)         "    0.000    0.000 0 
+  364 "Generation (Nuclear)            "    0.000    0.000 0 
+  365 "Pumping Load                    "    0.000    0.000 0 
+  366 "Generation (Pump/Generation)    "    0.000    0.000 0 
+  367 "INTERTIE                        "    0.000    0.000 0 
+  368 "Generation (Syn. condenser)     "    0.000    0.000 0 
+  369 "Generation (Pit River)          "    0.000    0.000 0 
+  370 "Generation (Battle River)       "    0.000    0.000 0 
+  371 "Generation (Cow Creek)          "    0.000    0.000 0 
+  372 "Generation (CVP)                "    0.000    0.000 0 
+  373 "Generation (N. Feather River)   "    0.000    0.000 0 
+  374 "Generation (S. Feather River)   "    0.000    0.000 0 
+  375 "Generation (W. Feather River)   "    0.000    0.000 0 
+  376 "Generation (Black Butt River)   "    0.000    0.000 0 
+  377 "Generation (Eel River)          "    0.000    0.000 0 
+  379 "Generation (Yuba/Bear River)    "    0.000   -0.184 0 
+  380 "Generation (SMUD Hydro)         "    0.000    0.000 0 
+  381 "Generation (Middle Fork)        "    0.000    0.000 0 
+  383 "Generation (Mokelumne River)    "    0.000    0.000 0 
+  384 "Generation (Stanislaus River)   "    0.000    0.000 0 
+  385 "Generation (Tuolumne River)     "    0.000    0.000 0 
+  386 "Generation (Merced River)       "    0.000    0.000 0 
+  387 "Generation (San Joaquin River)  "    0.000    0.000 0 
+  388 "Generation (Kings River)        "    0.000    0.000 0 
+  389 "Generation (Kern River)         "    0.000    0.000 0 
+  390 "Generation (QF Geothermal)      "    0.000    0.000 0 
+  391 "Generation (QF Hydro - North)   "    0.000    0.000 0 
+  392 "Generation (QF Hydro - Central) "    0.000    0.000 0 
+  393 "Generation (QF Hydro - South)   "    0.000    0.000 0 
+  394 "Generation (QF Biomass)         "    0.000    0.000 0 
+  395 "Generation (QF Waste)           "    0.000    0.000 0 
+  396 "Generation (QF Oil-recovery)    "    0.000    0.000 0 
+  397 "Generation (QF Cogen)           "    0.000    0.000 0 
+  398 "Generation (QF Wind - North)    "    0.000    0.000 0 
+  399 "Generation (QF Wind - Central)  "    0.000    0.000 0 
+  400 "Seattle Area, Olympic Peninsula "  933.792  808.724 0 
+  401 "Portland Area                   "  254.329 1281.732 0 
+  402 "Western Oregon                  " -446.260  216.506 0 
+  403 "Central Washington              " 6970.528 -893.754 0 
+  404 "Lower Columbia Basin            " 5672.374  604.344 0 
+  405 "Southern Oregon                 " -343.635  265.115 0 
+  406 "Spokane Area, N Idaho, W Montana" -275.292  147.356 0 
+  407 "Southeast Washington            " 2039.396 -403.613 0 
+  408 "Northwest Direct Svc Industries "    0.000    0.000 0 
+  409 "Avista (Washington Water Power) "    0.000    0.000 0 
+  410 "South Harney                    "    0.000    0.000 0 
+  411 "PAC:CLTP                        "  -71.417   -3.981 0 
+  412 "PAC:WULA                        "  -95.656  -20.220 0 
+  413 "PAC:WALA                        "  -29.583  -82.819 0 
+  414 "PAC:PNDL                        "  -84.409  -29.539 0 
+  415 "PAC:HERM                        " -478.849 -182.893 0 
+  416 "PAC:ENTR                        "  -17.546   16.340 0 
+  417 "CENTRALI                        "    0.000    0.000 0 
+  418 "PAC:LNCT                        "  -26.449   -1.247 0 
+  419 "PAC:LWSR                        "  263.729   54.026 0 
+  420 "WHATCOM                         "  479.223  -35.093 0 
+  421 "WHATCOMI                        "  -98.318   46.836 0 
+  422 "SKAGIT                          "  464.237 -126.901 0 
+  423 "SKAGITI                         "  -47.418    9.514 0 
+  424 "ISLAND                          "  -69.735    6.800 0 
+  425 "ISLANDI                         "   -3.457    0.070 0 
+  426 "N.KING                          " -890.356   39.514 0 
+  427 "N.KINGI                         "   -2.041    0.099 0 
+  428 "S.KING                          " -820.804   57.953 0 
+  429 "S.KINGI                         " -128.206    2.922 0 
+  430 "PIERCE                          " -231.012   38.573 0 
+  431 "PIERCEI                         "  -33.867    5.747 0 
+  432 "THURSTN                         " -417.690  115.293 0 
+  433 "THURSTNI                        "  -12.947   -2.405 0 
+  434 "KITSAP                          " -323.979   38.788 0 
+  436 "KITTITAS                        "  -45.250    7.373 0 
+  439 "PSEOTHER                        "  -12.559   -4.426 0 
+  440 "AVA: Borderline                 "  485.884  205.182 0 
+  441 "AVA: Coeur D'Alene              "  -34.632 -122.213 0 
+  442 "AVA:                            "    0.000    0.000 0 
+  443 "AVA:                            "    0.000    0.000 0 
+  444 "AVA: Lewiston/Clarkston         " -250.708  -18.115 0 
+  445 "AVA: Big Bend                   "  -87.523    1.569 0 
+  446 "AVA: Palouse                    " -161.683  -10.532 0 
+  447 "AVA: Spokane                    " -974.574  -56.295 0 
+  448 "AVA: Pend Oreille PUD           "    5.260  -34.985 0 
+  449 "AVA:                            "    0.000    0.000 0 
+  450 "Portland General - Generation   " 1999.752  398.740 0 
+  451 "Portland General - BES S/S      " -2043.419 -1039.077 0 
+  452 "Portland General - BES NODE     " -1614.790 -393.488 0 
+  453 "Portland General - SUBT S/S     " -220.351   21.763 0 
+  454 "Portland General - SUBT NODE    " -513.115  -25.306 0 
+  455 "Portland General - Industrial   "  -74.238  -61.362 0 
+  456 "Clark County, WA                " -614.133  -15.270 0 
+  457 "Cowlitz County, WA              " -458.342  -36.267 0 
+  464 "Seattle City Light              " -221.804   -0.303 0 
+  465 "Tacoma Power - Industrial       "    0.000    0.000 0 
+  466 "Tacoma Power - General          " -218.050  -65.879 0 
+  467 "Tacoma Power - Mutuals          " -158.686  -71.914 0 
+  468 "Snohomish PUD                   " -919.251 -151.690 0 
+  470 "PAC:MDFD                        " -482.751    0.971 0 
+  471 "PAC:ROSE                        "  -89.989   36.408 0 
+  472 "PAC:WLMT                        " -524.393 -119.902 0 
+  473 "PAC:CBAY                        "  -81.504  -14.503 0 
+  474 "PAC:C.OR                        " -505.155 -158.096 0 
+  475 "PAC:DALR                        "  495.128    0.694 0 
+  476 "Unused                          "    0.000    0.000 0 
+  477 "PAC:YKMA                        " -661.606  -97.435 0 
+  478 "PAC:YRKA                        " -101.471  -14.637 0 
+  479 "PAC:CRES                        "  -38.048    9.137 0 
+  480 "Eugene, OR                      " -256.788 -132.338 0 
+  481 "PAC:GRPS                        " -229.794   54.234 0 
+  482 "Grant County, WA                "  535.770    8.886 0 
+  483 "PAC:JCTN                        "  -41.076   -7.282 0 
+  484 "PAC:KFAL                        "  393.221  107.609 0 
+  485 "PAC:LAKE                        "    0.345   -4.541 0 
+  486 "Western Montana                 "  391.104 -379.474 0 
+  487 "Snake River / NW Wyoming        " -212.319   -4.507 0 
+  488 "PAC:HDRV                        "  -36.596  -15.171 0 
+  489 "PAC:PTLD                        " -421.535 -106.343 0 
+  490 "Wells, NV                       "  -19.679    5.460 0 
+  491 "Spokane Area Publics            "  102.560   31.685 0 
+  500 "BC HYDRO                        " 2005.143 -773.303 0 
+  503 "ALCAN                           "  152.989 -173.155 0 
+  520 "FBC-GEN                         " 1365.346   75.790 0 
+  521 "CEN-KOOT                        " -115.043 -115.848 0 
+  522 "KOOT-BOU                        "  -49.099   -6.436 0 
+  523 "S OKAN                          " -161.349 -187.395 0 
+  524 "OKANAGAN                        " -271.226  313.399 0 
+  526 "CELGAR                          "    0.000    0.000 0 
+  530 "COMINCO                         " -226.820 -161.549 0 
+  540 "AIES-Grande Prairie             "  -87.600   24.672 0 
+  541 "AIES-High Prairie               "  -87.196   26.569 0 
+  542 "AIES-Grande Cache               "   14.457  -30.633 0 
+  543 "AIES-Valleyview                 "  -12.487    6.280 0 
+  544 "AIES-Fox Creek                  "  -81.557  -29.271 0 
+  545 "AIES-Fort McMurray              "  -93.176   94.978 0 
+  546 "AIES-Swan Hills                 " -169.405  120.247 0 
+  547 "AIES-Athabasca/Lac La Biche     "  -59.983   79.525 0 
+  548 "AIES-Cold Lake                  "   59.419   85.358 0 
+  549 "AIES-Hinton/Edson               "  647.430 -130.941 0 
+  550 "AIES-Drayton Valley             "  -67.940   14.548 0 
+  551 "AIES-Wetaskiwin                 " -122.622  -13.173 0 
+  552 "AIES-Wainwright                 " -115.812    0.978 0 
+  553 "AIES-Fort Saskatchewan 2000     " -311.998   19.260 0 
+  554 "AIES-Abraham Lake               "   78.648   -8.881 0 
+  555 "AIES-Red Deer                   " -124.593  -10.173 0 
+  556 "AIES-Alliance/Battle River      "  157.246   -1.484 0 
+  557 "AIES-Provost                    "  -95.877 -103.769 0 
+  558 "AIES-Caroline                   "  -87.755    4.230 0 
+  559 "AIES-Didsbury                   "  -53.734   24.493 0 
+  560 "AIES-Lake Wabamun Generation    " 1499.322  161.025 0 
+  561 "AIES-Lake Wabamun/Stoney Plain  "    0.000    0.000 0 
+  562 "AIES-Hanna                      "  -57.730   70.032 0 
+  563 "AIES-Sheerness                  "  780.752  -73.161 0 
+  564 "AIES-Seebe                      "  -29.266   24.034 0 
+  565 "AIES-Strathmore/Blackie         "   72.809   -1.379 0 
+  566 "AIES-High River                 "  -93.300   -3.057 0 
+  567 "AIES-Brooks                     "  -85.704   84.310 0 
+  568 "AIES-Empress                    " -123.709   15.123 0 
+  569 "AIES-Stavely                    "  129.952  -32.386 0 
+  570 "AIES-Backbone                   "    0.000    0.000 0 
+  571 "AIES-NorthBackbone              "    0.000    0.000 0 
+  572 "AIES-Vauxhall                   "  -46.802  -40.428 0 
+  573 "AIES-Fort MacLeod               "  297.296  -35.686 0 
+  574 "AIES-Lethbridge                 " -144.811  -32.256 0 
+  575 "AIES-Glenwood                   "   15.898    7.939 0 
+  576 "AIES-Vegreville                 "  -66.448   14.023 0 
+  577 "AIES-Airdrie                    "   -8.868  -20.259 0 
+  578 "AIES-DOVER                      "    0.000    0.000 0 
+  579 "AIES-RUTH LAK                   "    0.000    0.000 0 
+  580 "AIES-Edmonton                   " -1592.378 -299.956 0 
+  581 "AIES-CHRISTIN                   "    0.000    0.000 0 
+  582 "AIES-Edmonton/Nisku Annex       "    0.000    0.000 0 
+  584 "AIES-Medicine Hat               "  199.389   -4.430 0 
+  586 "AIES-Calgary                    " -455.327    8.298 0 
+  593 "AIES-Lloydminster               " -108.393   74.295 0 
+  595 "AIES-WSCC                       "    0.000    0.000 0 
+  597 "AIES-Rainbow Lake               "   57.116  -33.293 0 
+  598 "AIES-High Level                 "  -32.133    3.498 0 
+  599 "AIES-Peace River                "  -52.866   25.929 0 
+  600 "ZoneIP                          "    0.000    0.000 0 
+  601 "ZoneIP Fixed                    "    0.000    0.000 0 
+  603 "ZoneIP SCL                      "   71.034   -4.174 0 
+  604 "ZoneIP NPR                      "   20.896   -0.779 0 
+  605 "ZoneIP BPA                      "    8.551   -0.662 0 
+  606 "ZoneIP RFT                      "   -1.880    0.000 0 
+  607 "ZoneIP OTEC                     "  -11.690   -0.520 0 
+  611 "ZoneIP Western                  " 1200.002 -102.966 0 
+  612 "ZoneIP Central                  " -1622.704    4.460 0 
+  613 "ZoneIP Southern                 " -325.176  310.972 0 
+  614 "ZoneIP Eastern                  " -339.945  -54.530 0 
+  621 "BUTTE_MT                        " -152.508  -63.957 0 
+  622 "GTFALLS_MT                      "  107.001  -21.257 0 
+  623 "BILLINGS_MT                     " -341.557 -240.246 0 
+  624 "LEWSTN_MT                       "   -5.620   16.976 0 
+  625 "NOGF_MT                         "  -14.761   -7.721 0 
+  626 "BOZEMAN_MT                      " -273.721   36.498 0 
+  627 "HELENA_MT                       "  -94.577  515.275 0 
+  628 "COLSTRIP_MT                     " 1716.168  -13.216 0 
+  629 "MISSOULA_MT                     " -147.855   27.419 0 
+  630 "MTSE_WAUW                       " -107.340   29.472 0 
+  631 "NOGF_WAUW                       "   61.185   27.078 0 
+  632 "NOGF_WAUW_69                    "  -55.679   -6.350 0 
+  633 "NOGF_MT_UMZ                     "    0.000    0.000 0 
+  640 "Zone27                          "   59.848   42.258 0 
+  641 "Zone28                          "    0.000    0.000 0 
+  642 "SPP-East Tie                    "  172.988 -203.796 0 
+  643 "NON-SPP GEN                     " -103.315   23.129 0 
+  644 "SPP-Harney                      "    0.000    0.000 0 
+  645 "SPP-Carlin Trend                " -277.443  -50.919 0 
+  646 "SPP-TM Load                     "  -52.985   41.090 0 
+  647 "SPP-North Tahoe                 "  -65.747   21.190 0 
+  648 "SPP-Carson City                 " -251.218    7.032 0 
+  649 "SPP_LAH_FAL_WINN                "  -52.423   -9.204 0 
+  650 "WY NORTH                        " -326.452   25.297 0 
+  651 "WY CENTRAL                      " 1885.068  252.877 0 
+  652 "ID NPC                          " -543.910 -377.400 0 
+  653 "WY EVAN                         "    0.000    0.000 0 
+  654 "UT NO UT                        " -102.800  108.925 0 
+  655 "UT SALT LAKE                    " -2008.878  345.033 0 
+  656 "UT CARB PRIC                    "   69.912  -22.985 0 
+  657 "UT SIGURD                       "  726.156  172.318 0 
+  658 "STA LOAD                        "    0.000    0.000 0 
+  659 "UT INDUS                        "    0.000    0.000 0 
+  660 "WY NAUGHTON                     "  436.324  -13.173 0 
+  661 "UT OGDEN                        " -1234.897   37.866 0 
+  662 "UT UTAH VALL                    "   23.200   72.252 0 
+  665 "ID BPA                          " -185.751   -3.563 0 
+  666 "ID IDFL                         "  -16.700   -7.052 0 
+  667 "ID AEC                          "    0.000    0.000 0 
+  668 "WY TRONA                        "  -98.324  -34.592 0 
+  669 "UT INTER                        "    0.000    0.000 0 
+  670 "UT UINTAH                       "  215.421   39.932 0 
+  671 "UT SUVPS                        "   -2.925  -34.162 0 
+  674 "UT RED DGT                      " -178.389  -48.155 0 
+  675 "UT RED UAMPS                    " -237.111  -51.521 0 
+  676 "UT MOAB PINT                    "  -23.175 -123.097 0 
+  677 "ID SPC                          "  -59.640   97.241 0 
+  678 "ID MONSANTO                     " -190.261  -84.205 0 
+  679 "WY EAST                         "  854.646 -103.559 0 
+  680 "ID SOLUT                        "    0.000    0.000 0 
+  681 "UT PARK CITY                    " -146.026  -28.547 0 
+  682 "UT TOOELE                       "  -36.177  -29.995 0 
+  683 "UT CLOVER                       "  467.722 -121.209 0 
+  684 "UT NUCORE                       "  -95.522  -28.546 0 
+  688 "UT SEID UAMP                    " -149.921  -69.062 0 
+  685 "UT HUNT EMER                    " 2269.670 -205.195 0 
+  686 "UT PAV BLACK                    "   52.244  -14.493 0 
+  687 "UT RED PAC                      "   32.075   99.421 0 
+  689 "UT US MAG                       " -108.564  -23.437 0 
+  700 "ZoneRD                          " -2767.604  303.869 0 
+  703 "ZoneRB                          " -364.787  -71.358 0 
+  704 "ZoneRS                          " 1280.068 -193.187 0 
+  705 "ZoneFR                          "  237.454  -46.595 0 
+  706 "ZoneRN                          " 1720.563  -93.831 0 
+  708 "ZoneRW                          " -651.710  -19.024 0 
+  709 "ZoneRM                          " -203.855    8.119 0 
+  710 "ZoneSL                          "  -42.631   17.667 0 
+  712 "ZoneWP                          " -105.216  -92.900 0 
+  753 "ZoneEW                          "  567.705   56.766 0 
+  750 "ZoneBH                          "  135.661   -9.920 0 
+  752 "ZoneEC                          " -362.772  152.440 0 
+  754 "ZoneFH                          " -284.636  -93.991 0 
+  755 "ZoneWC                          "  139.076   52.372 0 
+  756 "ZoneWN                          " -182.996  -39.113 0 
+  751 "ZoneBK                          "  113.107   16.963 0 
+  757 "ZoneCS                          " -110.619   -2.356 0 
+  777 "STANISLS                        "    0.000    0.000 0 
+  780 "PRPA                            " -128.636  -67.227 0 
+  785 "CSU                             " -135.969  106.384 0 
+  790 "ZoneR4                          " 1986.008 -121.213 0 
+  791 "Zone69                          " -404.761  117.883 0 
+  792 "WAPA-RMRAZ                      "  -36.477   -3.942 0 
+  793 "FEUS                            " -158.251  -82.967 0 
+  798 "FPL_B_S                         "    0.000    0.000 0 
+  799 "COALPROJ                        "    0.000    0.000 0 
+  840 "APS: WICKENBURG                 "  -58.546   20.837 0 
+  841 "APS: VERDE/PAYSON               " -258.522    0.105 0 
+  842 "APS: PRESCOTT                   " -343.040  -14.687 0 
+  843 "APS: FLAGSTAFF                  " -146.375   14.372 0 
+  844 "APS: CHOLLA/SHOWLOW             "  -26.565    7.195 0 
+  845 "APS:NAVAPACHE                   "    0.000    0.000 0 
+  846 "APS: LA PAZ                     "  -65.026    5.033 0 
+  847 "APS: YUMA                       " -200.107  -51.741 0 
+  848 "APS: SOUTHEAST                  " -139.448   -9.115 0 
+  849 "APS: CASA GRANDE                " -226.905    4.905 0 
+  850 "APS: APS Cochise                "  -37.622    7.597 0 
+  851 "ED3/TOHONO OODHAM               "   -0.181   -7.195 0 
+  890 "VEA-Main                        "  203.123  -73.438 0 
+  891 "VEA-North                       "  -15.586    2.531 0 
+  940 "SCE EASTERN 500/230kV           "  -41.142   48.319 0 
+  941 "SCE Devers 115kV                "  179.645  -64.946 0 
+  942 "SCE Mirage 115kV                " -410.430  -17.875 0 
+  943 "SCE Red Bluff                   " 1172.992  -51.065 0 
+  944 "SCE Colorado River              "  994.377  -35.677 0 
+  945 "SCE Vista 115kV                 " -166.555   -4.603 0 
+  946 "SCE El Casco 115kV              " -180.750   -7.432 0 
+  947 "SCE Valley 115kV                " -1597.317   96.974 0 
+  948 "SCE Alberhill 115kV             "    0.000    0.000 0 
+  949 "MWD Colorado River Aqueduct     " -241.822   19.332 0 
+  950 "SCE Vista 66kV Municipals       " -589.142  -22.056 0 
+  951 "SCE NORTH OF LUGO 230kV         " 1060.786 -149.599 0 
+  952 "SCE Control                     "   15.478  -41.794 0 
+  953 "SCE Kramer/Inyokern/Coolwater   "  -88.211   98.107 0 
+  954 "SCE Victor                      " -154.611    8.670 0 
+  955 "SCE EAST OF LUGO 500/230kV      "  -42.618  188.704 0 
+  957 "SCE Ivanpah                     "  689.380  -34.699 0 
+  958 "SCE Eldorado 230kV              "  676.710   88.486 0 
+ 1477 "Willow Creek LLC                "    0.000    0.000 0 
+ 1500 "SRP EHV 500 KV                  " 4487.602 -670.033 0 
+ 1504 "SRP EHV 230 KV                  "  666.750 -747.363 0 
+ 1506 "SRP EMA 115kV                   "  -50.376   69.577 0 
+ 1508 "SRP OTHER SUB 69kV              " 2529.105 -110.483 0 
+ 1510 "SRP AGUA FRIA                   " -306.829   20.953 0 
+ 1512 "SRP ALEXANDER                   " -336.620   50.852 0 
+ 1520 "SRP BRANDOW                     " -272.897   -7.151 0 
+ 1522 "SRP PAPAGO BUTTES               " -460.287   -1.592 0 
+ 1524 "SRP WARD                        " -309.651   -0.000 0 
+ 1530 "SRP FOUNTAIN                    "    0.000    0.000 0 
+ 1532 "SRP ROGERS                      " -307.847   47.245 0 
+ 1534 "SRP THUNDERSTONE                " -425.967   -5.335 0 
+ 1540 "SRP ORME                        " -548.809   33.496 0 
+ 1542 "SRP RUDD                        " -140.271  -15.111 0 
+ 1544 "SRP WHITE TANKS                 " -326.598   -7.661 0 
+ 1550 "SRP ANDERSON                    " -432.730   97.776 0 
+ 1552 "SRP KNOX                        " -267.409   45.126 0 
+ 1554 "SRP KYRENE                      " -208.009   19.490 0 
+ 1560 "SRP HOOPES                      " -456.850 -231.386 0 
+ 1562 "SRP CORBELL                     " -466.144  -27.919 0 
+ 1564 "SRP SCHRADER                    " -368.987   34.144 0 
+ 1570 "SRP SANTAN                      "  220.167  354.931 0 
+ 1572 "SRP BROWNING                    " -318.194  -26.760 0 
+ 1574 "SRP DINOSAUR                    " -289.352  -22.375 0 
+ 1576 "SRP ABEL                        " -203.820   39.207 0 
+ 1600 "BOWIE(TEP)                      "    0.000    0.000 0 
+ 1650 "ROSEMONT(TEP)                   "    0.000    0.000 0 
+ 6321 "NOGF_69_LD                      "    0.000    0.000 0 
+ 6331 "NOGF_UMZ_LD                     "    0.000    0.000 0 
+ 6391 "MT_UMZ_LD                       "    0.000    0.000 0 
+ 1535 "ZONE1535                        " -401.089  -48.805 0 
+    1 "ZONE1                           "    0.000    0.000 0 
+   17 "ZONE17                          "    0.000    0.000 0 
+  356 "ZONE356                         "    0.000    0.000 0 
+  713 "ZONE713                         "    0.000    0.000 0 
+  907 "ZONE907                         "    0.000    0.000 0 
+ 1578 "ZONE1578                        "    0.000    0.000 0 
+  287 "ZONE287                         "    0.000    0.000 0 

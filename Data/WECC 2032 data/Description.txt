@@ -1,0 +1,105 @@
+#This file was written by General Electric International, Inc.
+#  PSLF load flow program on Wed Dec  7 08:50:58 2022
+#  using the following solution parameters:
+#
+#  TCUL tap ratio adjustment enabled
+#
+#  Automatic SVD control enabled
+#
+#  AREA interchange control enabled
+#
+#  Automatic phase shifter adjustment enabled
+#
+#  DC converter control enabled
+#
+#  GCD control off
+#
+#  Jumper Threshold Impedance   0.0003
+#
+#  Newton Solution Tolerance    0.1000
+#
+#
+#     template for epc format
+#
+#datamaintainer data  [   25] name ph email company location parent
+#
+#substation data  [ 7478]  latitude  longitude  rdc  "datamaintainer"
+#
+#block data  [    0]  "datamaintainer"
+#
+#plant data  [    0]  "datamaintainer"
+#
+#bus data  [26524]            ty  vsched   volt     angle    ar zone  vmax   vmin   date_in date_out pid L own st isol lat long sdmon vmax1 vmin1 dvmax
+#
+#branch data  [19800]                                ck  se  ------------long_id_------------    st resist   react   charge   rate1  rate2  rate3  rate4 aloss  lngth 
+#ar zone trangi tap_f tap_t  date_in date_out pid N ty  rate5  rate6  rate7  rate8 ow1 part1 ow2 part2 ow3 part3 ow4 part4 ow5 part5 ow6 part6 ow7 part7 ow8 part8 ohm sdmon
+#
+#transformer data  [10355]                              ck   ------------long_id_------------    st ty --no---    reg_name          zt         int                           tert               ar zone  tbase   ps_r    ps_x    pt_r    pt_x    ts_r    ts_x
+#vnomp -vnoms -vnomt anglep -gmag-- -bmag--  rate1  rate2  rate3  rate4 -loss  -tmax- -tmin- -vmax- -vmin- -step-- -tap-- -ftapp -ftaps -ftapt  date_in date_out pid N   rate5  rate6  rate7  rate8
+#ow1 part1 ow2 part2 ow3 part3 ow4 part4 ow5 part5 ow6 part6 ow7 part7 ow8 part8 ohm
+#tbasept tbasets angls anglt rates1 rates2 rates3 ratet1 ratet2 ratet3 alosss alosst rxunits gbunits tunits rcomp xcomp sdmon
+#
+#generator data  [4926]    id   ------------long_id_------------    st ---no--     reg_name       prf  qrf  ar zone   pgen   pmax   pmin   qgen   qmax   qmin   mbase   cmp_r cmp_x gen_r gen_x           hbus                    tbus           date_in date_out pid N
+#-rtran -xtran -gtap- ow1 part1 ow2 part2 ow3 part3 ow4 part4 ow5 part5 ow6 part6 ow7 part7 ow8 part8 gov agc disp basld air turb qtab pmax2 sdmon
+#
+#load data  [12301]          id   ------------long_id_------------     st      mw      mvar    mw_i    mvar_i  mw_z      mvar_z  ar zone  date_in date_out pid N own sdmon nonc ithbus ithflag
+#
+#shunt data  [2308]         id                               ck  se  long_id_     st ar zone    pu_mw  pu_mvar    date_in date_out pid N own part1 own part2 own part3 own part4 --num--  --name--  --kv--
+#
+#svd data  [1610]            id   ------------long_id_------------    st ty --no---     reg_name       ar zone      g      b  min_c  max_c  vband   bmin   bmax  date_in date_out pid N own part1 own part2 own part3 own part4
+#N1 -step- N2 -step- N3 -step- N4 -step- N5 -step- N6 -step- N7 -step- N8 -step-
+#
+#area data  [ 25]                           swing  desired    tol      pnet     qnet
+#
+#zone data  [ 521]                           pnet     qnet
+#
+#interface data  [  66]                     pnet     qnet   -rate1- -rate2- -rate3- -rate4- 
+#
+#interface branch data  [  318]                      ck      -i_no-  part_fac  
+#
+#dc bus data  [ 20]           ty ar  zone   vsched     dc_volt  date_in date_out pid own
+#
+#dc line data  [ 12]                                  ck   ------------long_id_------------     st ar zone   resist   react    capac   rate1  rate2  rate3  rate4  len  aloss    date_in date_out PID N  rate5  rate6  rate7  rate8
+#len-- -loss-  date_in date_out pid N  rate5  rate6  rate7  rate8 ow1 part1 ow2 part2 ow3 part3 ow4 part4 ow5 part5 ow6 part6 ow7 part7 ow8 part8
+#
+#dc converter data  [ 16]                             id   ------------long_id_------------    st ty md nb fg  --no---           reg   ar zone  date_in date_out
+#-idc-- -vdc-- -pac-- -qac-- p_schd i_schd v_schd i_marg -rcomp vmin_p vmin_c vac_bs vdc_bs
+#-alpha al_min al_max -gamma ga_min ga_max vdiode -xcomm r_tran x_tran
+#-tbase tapfac tapfdc tap_ac tap_dc -tmin- -tmax- -tstep -vtmax -vtmin -loss- i_rate x_smoot pid N
+#ow1 part1 ow2 part2 ow3 part3 ow4 part4 ow5 part5 ow6 part6 ow7 part7 ow8 part8
+#
+#vs converter data  [  0]                                        id   ------------long_id_------------ st reg           ar zn dmd amd  dcset acset
+# --aloss-- --bloss-- -minloss- ---smax-- ---imax-- ---qmax-- ---qmin-- ---pwf---  date_in   date_out
+# tp dcs  ---qmx--- ---qmn--- -psetlim- ---pdc--- ---idc--- ---pac--- ---qac--- pid stn
+#ow1 part1 ow2 part2 ow3 part3 ow4 part4 ow5 part5 ow6 part6 ow7 part7 ow8 part8 sdmon
+#
+#z table data  [31]  -tap2 fact2 -tap3 fact3 -tap4 fact4 -tap5 fact5 -tap6 fact6 -tap7 fact7 -tap8 fact8 -tap9 fact9 tap10 fac10 tap11 fac11
+#
+#gcd data  [   0]                     
+#
+#transaction data  [   67]             st    sch_mw   sch_mvar  flag stn pid         transaction name
+#
+#owner data  [  556]   owner name           s name       net_mw   net_mvar     sch_mw   sch_mvar  ar
+#
+#motor data  [    0]          ID   ------------long_id_------------  S -ar zone own flag  --type-- 
+#mbase- -pelec- -qelec- --pf--- --ls--- --tp0-- --lp--- -tpp0-- --lpp-- --ra--- ---h--- --rt--- --lt--- --bcap-
+#zppr-- -zppx-- -alt0-- -alt1-- -blt-- -alt2-- -blt2--  date_in date_out pid N
+#
+#line   data  [    0]                                ck  se  --long_id_--    st  pole name  length w1  ---cond name---   w2  ---cond name---
+#w3 ---cond name--- w4 ---cond name--- w5 ---cond name--- area zone nc rating  date_in date_out pid N
+#ow1 part1 ow2 part2 ow3 part3 ow4 part4 ow5 part5 ow6 part6 ow7 part7 ow8 part8
+#--r--- --x--- --char-- --r0-- --x0--- -char0-- ampc1 ampc2 ampc3 ampc4 ampc5 -loss
+#
+#qtable data     [ 787]   id     p[0]   qmx[0]  qmn[0]  ....  
+#
+#ba data  [ 38]                           swing  desired    tol      pnet     qnet
+#
+#injection group data  [  0]  "datamaintainer" 
+#
+#injection group element data  [  0]  prfcalcopt prf value
+#
+#voltcntgrp data  [  0]  st 
+#
+#voltcntgrpelem data  [  0] 
+#
+#interface element  [  0]  pf 

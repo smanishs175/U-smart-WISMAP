@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-GAPSIM API Debug</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        button {
+            padding: 8px 12px;
+            margin: 5px;
+            cursor: pointer;
+        }
+        pre {
+            background-color: #f5f5f5;
+            padding: 10px;
+            border-radius: 5px;
+            max-height: 300px;
+            overflow: auto;
+        }
+        .success {
+            color: green;
+        }
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>AI-GAPSIM API Debug</h1>
+    
+    <div>
+        <h2>Authentication</h2>
+        <button id="login-btn">Test Login</button>
+        <button id="user-btn">Get Current User</button>
+    </div>
+    
+    <div>
+        <h2>Grid Data</h2>
+        <button id="buses-btn">Fetch Buses</button>
+        <button id="branches-btn">Fetch Branches</button>
+        <button id="generators-btn">Fetch Generators</button>
+        <button id="loads-btn">Fetch Loads</button>
+        <button id="substations-btn">Fetch Substations</button>
+        <button id="bas-btn">Fetch Balancing Authorities</button>
+    </div>
+    
+    <h2>Results:</h2>
+    <pre id="results">Click a button to test an endpoint...</pre>
+    
+    <script>
+        // Store token after login
+        let token = null;
+        const baseUrl = 'http://localhost:8000';
+        const resultsElement = document.getElementById('results');
+        
+        function logResult(message, isError = false) {
+            const timestamp = new Date().toLocaleTimeString();
+            resultsElement.innerHTML = `[${timestamp}] ${isError ? '❌ ERROR: ' : '✅ '} ${message}\n\n` + resultsElement.innerHTML;
+            if (isError) {
+                resultsElement.classList.add('error');
+                resultsElement.classList.remove('success');
+            } else {
+                resultsElement.classList.add('success');
+                resultsElement.classList.remove('error');
+            }
+        }
+        
+        async function fetchWithLogging(endpoint, options = {}) {
+            try {
+                logResult(`Sending request to ${baseUrl}${endpoint}...`);
+                const startTime = performance.now();
+                const response = await fetch(`${baseUrl}${endpoint}`, options);
+                const endTime = performance.now();
+                const duration = (endTime - startTime).toFixed(0);
+                
+                if (!response.ok) {
+                    const text = await response.text();
+                    throw new Error(`HTTP error ${response.status}: ${text}`);
+                }
+                
+                const data = await response.json();
+                logResult(`Response received in ${duration}ms with status ${response.status}`);
+                
+                // Display response data with pretty formatting
+                const formattedData = JSON.stringify(data, null, 2);
+                const truncatedData = formattedData.length > 500 ? 
+                    formattedData.substring(0, 500) + '... (truncated)' : 
+                    formattedData;
+                    
+                logResult(`Data: ${truncatedData}`);
+                
+                return data;
+            } catch (error) {
+                logResult(`${error.message}`, true);
+                console.error('Full error:', error);
+                throw error;
+            }
+        }
+        
+        // Login
+        document.getElementById('login-btn').addEventListener('click', async () => {
+            try {
+                const formData = new URLSearchParams();
+                formData.append('username', 'test@example.com');
+                formData.append('password', 'password123');
+                
+                const data = await fetchWithLogging('/api/auth/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: formData,
+                });
+                
+                token = data.access_token;
+                logResult(`Login successful! Token: ${token}`);
+            } catch (error) {
+                // Error already logged
+            }
+        });
+        
+        // Get current user
+        document.getElementById('user-btn').addEventListener('click', async () => {
+            try {
+                const options = token ? {
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                } : {};
+                
+                const data = await fetchWithLogging('/api/auth/me', options);
+                logResult(`User data retrieved successfully`);
+            } catch (error) {
+                // Error already logged
+            }
+        });
+        
+        // Fetch grid data endpoints
+        document.getElementById('buses-btn').addEventListener('click', async () => {
+            try {
+                const data = await fetchWithLogging('/api/public/buses');
+                logResult(`Retrieved ${data.length} buses successfully`);
+            } catch (error) {
+                // Error already logged
+            }
+        });
+        
+        document.getElementById('branches-btn').addEventListener('click', async () => {
+            try {
+                const data = await fetchWithLogging('/api/public/branches');
+                logResult(`Retrieved ${data.length} branches successfully`);
+            } catch (error) {
+                // Error already logged
+            }
+        });
+        
+        document.getElementById('generators-btn').addEventListener('click', async () => {
+            try {
+                const data = await fetchWithLogging('/api/public/generators');
+                logResult(`Retrieved ${data.length} generators successfully`);
+            } catch (error) {
+                // Error already logged
+            }
+        });
+        
+        document.getElementById('loads-btn').addEventListener('click', async () => {
+            try {
+                const data = await fetchWithLogging('/api/public/loads');
+                logResult(`Retrieved ${data.length} loads successfully`);
+            } catch (error) {
+                // Error already logged
+            }
+        });
+        
+        document.getElementById('substations-btn').addEventListener('click', async () => {
+            try {
+                const data = await fetchWithLogging('/api/public/substations');
+                logResult(`Retrieved ${data.length} substations successfully`);
+            } catch (error) {
+                // Error already logged
+            }
+        });
+        
+        document.getElementById('bas-btn').addEventListener('click', async () => {
+            try {
+                const data = await fetchWithLogging('/api/public/bas');
+                logResult(`Retrieved ${data.length} balancing authorities successfully`);
+            } catch (error) {
+                // Error already logged
+            }
+        });
+    </script>
+</body>
+</html> 

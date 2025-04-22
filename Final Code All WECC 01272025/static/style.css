@@ -1,0 +1,213 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+#map {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+#cluster-toggle {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: white;
+    padding: 5px;
+    z-index: 1000;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+#controls {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: white;
+    padding: 10px;
+    z-index: 1000;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+#time-bar-container {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+#time-bar {
+    flex-grow: 1;
+    margin: 0 10px;
+}
+#play-pause-button {
+    margin-left: 10px;
+}
+
+.legend {
+    background-color: white;
+    padding: 10px;
+    border: 2px solid #000; /* Black border */
+    border-radius: 4px; /* Rounded corners */
+    z-index: 1000;
+    font-size: 10px; /* Font size for legend text */
+    font-family: 'Times New Roman', Times, serif; /* Font for legend text */
+    color: #555; /* Text color */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); /* Optional shadow for visibility */
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px; /* Spacing between items */
+}
+
+.legend-line {
+    width: 25px;  /* Width of the line */
+    height: 5px;  /* Height of the line (thickness) */
+    margin-right: 8px; /* Space between the line and the text */
+}
+
+.legend-item:last-child {
+    margin-bottom: 0; /* No margin for last item */
+}
+
+.legend-icon {
+    width: 15px; /* Size of icons */
+    height: 15px; /* Size of icons */
+    margin-right: 8px; /* Space between icon and text */
+}
+
+
+/* Define the gradient legend bar */
+.legend-container {
+    position: fixed;
+    bottom: 25px;  /* Distance from the bottom */
+    right: 45px;   /* Distance from the right */
+    background-color: rgba(255, 255, 255, 0.8);  /* Semi-transparent background */
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #000;
+}
+
+.legend-bar {
+    width: 200px;  /* Adjust the width to match your heatmap */
+    height: 20px;
+    background: linear-gradient(to right, 
+        blue, 
+        white 25%, 
+        yellow 50%, 
+        red 75%, 
+        black);
+    border: 1px solid #000;
+}
+
+
+/* Style for the labels */
+.legend-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 10px;
+    font-family: 'Times New Roman', Times, serif;
+    margin-top: 5px;
+}
+
+.legend-bar2 {
+    width: 300px;  /* Width of the color bar */
+    height: 20px;
+    border: 1px solid #000;
+    background: url('data:image/png;base64,') no-repeat; /* Initial empty background */
+    background-size: cover; /* Ensure the image covers the container */
+}
+
+.legend-title {
+    font-weight: bold;
+    text-align: center;
+    flex-grow: 1;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 10px;
+}
+
+.colorbar-container {
+    width: 220px; /* Adjust width as needed */
+    height: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.colorbar {
+    width: 100%;
+    height: 20px;
+    border: 1px solid #000;
+    background: linear-gradient(to right, #ffffcc, #ffeda0, #feb24c, #fd8d3c, #fc4e2a, #e31a1c);
+    position: relative;
+}
+.colorbar-label {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0 5px;
+    font-size: 12px;
+}
+
+.leaflet-popup-content {
+    margin: 0;
+    height: auto; /* Let content height adjust as needed */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 5px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+.custom-popup {
+    max-width: 100px; /* Adjust width as needed */
+    word-wrap: break-word;
+}
+
+.custom-popup th, .custom-popup td {
+    text-align: left;
+    padding: 5px;
+}
+
+.popup-chart-size {
+    width: 600px; /* Width for Chart view */
+    height: 300px; /* Height for Chart view */
+}
+
+.popup-table-size {
+    width: 1000px !important; /* Fixed width for popups with events */
+    max-height: 300px !important; /* Maximum height */
+    overflow: auto; /* Enable scrolling if content overflows */
+}
+
+/* For popups with no events */
+.popup-no-events {
+    width:600px !important; /* Fixed width for popups without events */
+    max-height: 300px !important; /* Maximum height */
+    overflow: auto; /* Enable scrolling if content overflows */
+}
+
+.custom-popup .leaflet-popup-content-wrapper {
+    position: relative;
+    text-align: center;
+}
+
+.custom-popup .leaflet-popup-tip {
+    display: none; /* Hide the default tip */
+}
+
+.custom-popup .leaflet-popup-content {
+    margin-bottom: -20px; /* Adjust as needed to move the popup up */
+}

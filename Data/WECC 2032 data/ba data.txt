@@ -1,0 +1,39 @@
+ba data  [ 38]                            swing  desired    tol      pnet     qnet
+    2 "Arizona Public Service Company  "       0    0.000    0.000 2067.431  941.409 0  0  0  """   0.000000 
+    4 "WAPA - Desert Southwest Region  "       0    0.000    0.000 2619.652  154.686 0  0  0  """   0.000000 
+    7 "PacifiCorp - East               "       0    0.000    0.000 1287.012 -4686.217 0  0  0  """   0.000000 
+   10 "BC Hydro                        "       0    0.000    0.000 2699.942 -464.642 0  0  0  """   0.000000 
+   11 "Idaho Power Company             "       0    0.000    0.000 -1379.878  128.064 0  0  0  """   0.000000 
+   13 "PacifiCorp - West               "       0    0.000    0.000 -3675.342 -1081.014 0  0  0  """   0.000000 
+   14 "Bonneville Power Administration "       0    0.000    0.000 11171.189  270.102 0  0  0  """   0.000000 
+   15 "Seattle City Light              "       0    0.000    0.000 -260.043 -100.079 0  0  0  """   0.000000 
+   16 "Imperial Irrigation District    "       0    0.000    0.000  745.658  -11.399 0  0  0  """   0.000000 
+   24 "NV Energy                       "       0    0.000    0.000 -1695.594 -1426.423 0  0  0  """   0.000000 
+   26 "WAPA - Rocky Mountain Region    "       0    0.000    0.000 1339.634 -108.690 0  0  0  """   0.000000 
+   29 "Avista Corporation              "       0    0.000    0.000 -871.860 -502.571 0  0  0  """   0.000000 
+   30 "Puget Sound Energy, Inc.        "       0    0.000    0.000 -1698.047   51.569 0  0  0  """   0.000000 
+   32 "Portland General Electric Co    "       0    0.000    0.000 -2461.319 -845.952 0  0  0  """   0.000000 
+   35 "PUD No. 2 of Grant County       "       0    0.000    0.000  515.673 -157.375 0  0  0  """   0.000000 
+   36 "Chelan PUD                      "       0    0.000    0.000 1130.718   53.937 0  0  0  """   0.000000 
+   38 "Tacoma Power                    "       0    0.000    0.000 -222.249 -175.387 0  0  0  """   0.000000 
+   46 "PUD No. 1 of Douglas County     "       0    0.000    0.000  224.625 -161.490 0  0  0  """   0.000000 
+   65 "Public Service Co of Colorado   "       0    0.000    0.000 -1113.264 -2116.300 0  0  0  """   0.000000 
+   76 "AESO                            "       0    0.000    0.000 -461.854 -967.938 0  0  0  """   0.000000 
+   77 "WAPA - Upper Great Plains Region"       0    0.000    0.000 -101.834   44.524 0  0  0  """   0.000000 
+   78 "NorthWestern Corporation        "       0    0.000    0.000  674.676  124.517 0  0  0  """   0.000000 
+   79 "Tucson Electric Power           "       0    0.000    0.000 -951.102  178.904 0  0  0  """   0.000000 
+   80 "SRP Agr Improvement Pwr District"       0    0.000    0.000 1004.894 -2026.200 0  0  0  """   0.000000 
+   81 "LA Department of Water and Power"       0    0.000    0.000 -710.173 4337.728 0  0  0  """   0.000000 
+  111 "CENACE                          "       0    0.000    0.000 -350.400   45.169 0  0  0  """   0.000000 
+  125 "El Paso Electric Company        "       0    0.000    0.000 -624.022   49.638 0  0  0  """   0.000000 
+  130 "Public Service Co of New Mexico "       0    0.000    0.000 -720.422   27.820 0  0  0  """   0.000000 
+  333 "Arlington Valley, LLC - AVBA    "       0    0.000    0.000    0.000    0.000 0  0  0  """   0.000000 
+  337 "Turlock Irrigation District     "       0    0.000    0.000    0.000    0.000 0  0  0  """   0.000000 
+  555 "Griffith Energy, LLC            "       0    0.000    0.000    0.000    0.000 0  0  0  """   0.000000 
+  777 "Gridforce Energy Management, LLC"       0    0.000    0.000   29.561    6.766 0  0  0  """   0.000000 
+  826 "NaturEner Power Watch, LLC (GWA)"       0    0.000    0.000    0.000    0.000 0  0  0  """   0.000000 
+  827 "NaturEner Wind Watch, LLC       "       0    0.000    0.000  117.895  -24.895 0  0  0  """   0.000000 
+  888 "Balancing Authority of Northn CA"       0    0.000    0.000 -1196.977  125.149 0  0  0  """   0.000000 
+  937 "Avangrid Renewables             "       0    0.000    0.000    0.000    0.000 0  0  0  """   0.000000 
+  952 "New Harquahala Gen Co, LLC-HGBA "       0    0.000    0.000    0.000    0.000 0  0  0  """   0.000000 
+  999 "CA Independent System Operator  "       0    0.000    0.000 -6775.383 -4464.118 0  0  0  """   0.000000 

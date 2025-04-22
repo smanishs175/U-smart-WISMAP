@@ -1,0 +1,1769 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Map</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.1/dist/MarkerCluster.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.1/dist/MarkerCluster.Default.css" />
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div id="controls">
+        <form action="{{ url_for('update_date') }}" method="post">
+            <label for="start_date">Start Date:</label>
+            <input type="date" id="start_date" name="start_date" value="{{ start_date }}" required min="1950-01-01" max="2100-12-31">
+            <label for="end_date">End Date:</label>
+            <input type="date" id="end_date" name="end_date" value="{{ end_date }}" required min="1950-01-01" max="2100-12-31">
+            <button type="submit">Load Data</button>
+        </form>
+        <label for="cluster-checkbox">Cluster Markers</label>
+        <input type="checkbox" id="cluster-checkbox">
+        <div id="time-bar-container">
+            <span id="current-date">{{ heatmaps[0].date if heatmaps else '' }}</span>
+            <input type="range" id="time-bar" min="0" max="{{ heatmaps|length - 1 }}" value="0">
+            <button id="play-pause-button">Play</button>
+        </div>
+        <div id="heatmap-type-selector">
+            <label for="heatmap-type">Select Heatmap Type:</label>
+            <select id="heatmap-type">
+                <option value="0">Max Temp</option>
+                <option value="1">Mean Max</option>
+                <option value="2">Mean Max Dep Normal</option>
+                <option value="3">Days Max Temp >= 90°F</option>
+                <option value="4">Avg Temp</option>
+                <option value="5">Mean Avg</option>
+                <option value="6">Mean Avg Dep Normal</option>
+                <option value="7">Days Avg Temp >= 90°F</option>
+                <option value="8">Min Temp</option>
+                <option value="9">Mean Min</option>
+                <option value="10">Mean Min Dep Normal</option>
+                <option value="11">Days Min Temp >= 90°F</option>
+            </select>
+        </div>
+    </div>
+    <div id="map"></div>
+    <div id="legend"></div>
+    <div id="color-bar-container" class="legend-container"></div>
+    <div class="legend-container">
+        <div class="legend-bar"></div>
+        <div class="legend-labels">
+            <span>-30°C</span>
+            <span>50°C</span>
+        </div>
+    </div>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet.markercluster@1.5.1/dist/leaflet.markercluster.js"></script>
+    <script>
+        // Initialize the map and set view with zoom control in the bottom right
+        var map = L.map('map', {
+            zoomControl: false // Disable the default zoom control
+        }).setView([37.7749, -122.4194], 5);
+
+        // Add custom zoom control
+        L.control.zoom({
+            position: 'bottomright' // Change this to 'topleft', 'topright', 'bottomleft', or 'bottomright'
+        }).addTo(map);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+        }).addTo(map);
+        
+
+        var transmissionLineData = {{ transmission_line_data|tojson }};
+
+        transmissionLineData.forEach(function(line) {
+            var lineCoordinates = line.coords.map(function(coord) {
+                return [coord[0], coord[1]];
+            });
+
+            // Assuming each line has its own voltage property
+            var color = getVoltageColor(line.voltage);
+            var thickness = getThickness(line.voltage);
+            var dashArray = line.line_status === 0 ? '5, 5' : null; // Use dotted lines if line_status is 0
+
+            var polyline = L.polyline(lineCoordinates, { color: color, weight: thickness, dashArray: dashArray });
+            polyline.addTo(map);
+
+            // Add click event to the main polyline
+            polyline.on('click', function() {
+                // Extract start and end points
+                var startPoint = lineCoordinates[0];
+                var endPoint = lineCoordinates[lineCoordinates.length - 1];
+
+                var startLat = startPoint[0];
+                var startLon = startPoint[1];
+                var endLat = endPoint[0];
+                var endLon = endPoint[1];
+
+                var type = 'line';
+                var rate2 = line.rate2;
+                var voltage = line.voltage;
+                var line_status = line.line_status;
+
+                var start_date = document.getElementById('start_date').value;
+                var end_date = document.getElementById('end_date').value;
+
+                if (!start_date || !end_date) {
+                    alert('Please select both start and end dates.');
+                    return;
+                }
+
+                var plotUrl = `/plot?startLat=${startLat}&startLon=${startLon}&endLat=${endLat}&endLon=${endLon}&type=${type}&rate2=${rate2}&voltage=${voltage}&line_status=${line_status}&start_date=${start_date}&end_date=${end_date}`;
+
+                // Open the plot.html in a new window or tab
+                window.open(plotUrl, 'plotWindow', 'width=1500,height=1000');
+            });
+        });
+
+        function getVoltageColor(voltage) {
+            if (voltage < 100) return 'blue';
+            if (voltage >= 100 && voltage <= 161) return 'red';
+            if (voltage >= 220 && voltage <= 287) return 'purple';
+            if (voltage == 345) return 'orange';
+            if (voltage == 500) return 'yellow';
+            if (voltage >= 735) return 'pink';
+            return 'gray';
+        }
+
+        // Function to get thickness based on voltage
+        function getThickness(voltage) {
+            if (voltage < 100) return 1;
+            if (voltage >= 100 && voltage <= 161) return 1.4;
+            if (voltage >= 220 && voltage <= 287) return 1.8;
+            if (voltage == 345) return 2.2;
+            if (voltage == 500) return 2.6;
+            if (voltage >= 735) return 3;
+            return 0.7;
+        }
+
+        function updateIconSize(zoom) {
+            var newSize = getSizeForZoom(zoom);
+            
+            // Update generator markers
+            genMarkers.eachLayer(function(layer) {
+                var icon = layer.getIcon();
+                icon.options.iconSize = newSize;
+                icon.options.iconAnchor = [newSize[0] / 2, newSize[1]];
+                layer.setIcon(icon);
+            });
+        
+            // Update load markers
+            loadMarkers.eachLayer(function(layer) {
+                var icon = layer.getIcon();
+                icon.options.iconSize = newSize;
+                icon.options.iconAnchor = [newSize[0] / 2, newSize[1]];
+                layer.setIcon(icon);
+            });
+        
+            // Update substation markers
+            substationMarkers.eachLayer(function(layer) {
+                var icon = layer.getIcon();
+                icon.options.iconSize = newSize;
+                icon.options.iconAnchor = [newSize[0] / 2, newSize[1]];
+                layer.setIcon(icon);
+            });
+        
+            // Update bus markers
+            busMarkers.eachLayer(function(layer) {
+                var icon = layer.getIcon();
+                icon.options.iconSize = newSize;
+                icon.options.iconAnchor = [newSize[0] / 2, newSize[1]];
+                layer.setIcon(icon);
+            });
+        }
+
+
+
+        function getSizeForZoom(zoom) {
+            // Print the initial zoom level
+            console.log('Initial zoom level:', map.getZoom());
+            if (zoom >= 14) return [50, 50];
+            if (zoom >= 10) return [40, 40];
+            if (zoom >= 8) return [30, 30];
+            if (zoom >= 7) return [20, 20];
+            if (zoom >= 6) return [10, 10];
+            if (zoom >= 4) return [5, 5];
+            return [1, 1];
+        }
+        
+        // Function to load custom icon for generators based on type
+        function loadGeneratorIcon(genType) {
+            var iconUrl;
+            switch (genType) {
+                case 'Battery Storage':
+                    iconUrl = "{{ url_for('static', filename='Storage.png') }}";
+                    break;
+                case 'Bio-ST':
+                    iconUrl = "{{ url_for('static', filename='Bio-ST.png') }}";
+                    break;
+                case 'CCWhole-NatGas-Aero':
+                    iconUrl = "{{ url_for('static', filename='CCWhole-NatGas-Aero.png') }}";
+                    break;
+                case 'CCWhole-NatGas-Industrial':
+                    iconUrl = "{{ url_for('static', filename='CCWhole-NatGas-Industrial.png') }}";
+                    break;
+                case 'CCWhole-NatGas-SingleShaft':
+                    iconUrl = "{{ url_for('static', filename='CCWhole-NatGas-SingleShaft.png') }}";
+                    break;
+                case 'CT-NatGas-Aero':
+                    iconUrl = "{{ url_for('static', filename='CT-NatGas-Aero.png') }}";
+                    break;
+                case 'CT-NatGas-Industrial':
+                    iconUrl = "{{ url_for('static', filename='CT-NatGas-Industrial.png') }}";
+                    break;
+                case 'DC-Intertie':
+                    iconUrl = "{{ url_for('static', filename='DC-Intertie.png') }}";
+                    break;
+                case 'DG-BTM':
+                    iconUrl = "{{ url_for('static', filename='DG-BTM.png') }}";
+                    break;
+                case 'Geo-BinaryCycle':
+                    iconUrl = "{{ url_for('static', filename='Geo-BinaryCycle.png') }}";
+                    break;
+                case 'Hydro':
+                    iconUrl = "{{ url_for('static', filename='Hydro.png') }}";
+                    break;
+                case 'HydroRPS':
+                    iconUrl = "{{ url_for('static', filename='HydroRPS.png') }}";
+                    break;
+                case 'ICE-NatGas':
+                    iconUrl = "{{ url_for('static', filename='ICE-NatGas.png') }}";
+                    break;
+                case 'SolarPV-NonTracking':
+                    iconUrl = "{{ url_for('static', filename='SolarPV-NonTracking.png') }}";
+                    break;
+                case 'SolarPV-Tracking':
+                    iconUrl = "{{ url_for('static', filename='SolarPV-Tracking.png') }}";
+                    break;
+                case 'ST-Coal':
+                    iconUrl = "{{ url_for('static', filename='ST-Coal.png') }}";
+                    break;
+                case 'ST-NatGas':
+                    iconUrl = "{{ url_for('static', filename='ST-NatGas.png') }}";
+                    break;
+                case 'ST-Nuclear':
+                    iconUrl = "{{ url_for('static', filename='ST-Nuclear.png') }}";
+                    break;
+                case 'WT-Onshore':
+                    iconUrl = "{{ url_for('static', filename='WT-Onshore.png') }}";
+                    break;
+                default:
+                    iconUrl = "{{ url_for('static', filename='generator.png') }}"; // Default icon for unknown types
+            }
+
+            var initialZoom = map.getZoom();
+            var initialSize = getSizeForZoom(initialZoom);
+
+            return L.icon({
+                iconUrl: iconUrl,
+                iconSize: initialSize,
+                iconAnchor: [initialSize[0] / 2, initialSize[1]],
+                popupAnchor: [0, -initialSize[1] / 2]
+            });
+        }
+
+        // Function to load custom icon for other types
+        function loadIcon(type) {
+            var iconUrl;
+            switch (type) {
+                case 'Load':
+                    iconUrl = "{{ url_for('static', filename='load.png') }}";
+                    break;
+                case 'Bus':
+                    iconUrl = "{{ url_for('static', filename='bus.png') }}";
+                    break;
+                case 'Substation':
+                    iconUrl = "{{ url_for('static', filename='substation.png') }}";
+                    break;
+            }
+
+            var initialZoom = map.getZoom();
+            var initialSize = getSizeForZoom(initialZoom);
+
+            return L.icon({
+                iconUrl: iconUrl,
+                iconSize: initialSize,
+                iconAnchor: [initialSize[0] / 2, initialSize[1]],
+                popupAnchor: [0, -initialSize[1] / 2]
+            });
+        }
+
+         // Add generator points to the map
+         var genPointsData = {{ gen_points_data|tojson }};
+         // Add load points to the map
+         var loadPointsData = {{ load_points_data|tojson }};
+         // Add substation points to the map
+         var substationPointsData = {{ substation_points_data|tojson }};
+         // Add bus points to the map
+         var busPointsData = {{ bus_points_data|tojson }};
+
+         // Create marker cluster groups for each type
+         var genMarkers = L.markerClusterGroup();
+         var loadMarkers = L.markerClusterGroup();
+         var substationMarkers = L.markerClusterGroup();
+         var busMarkers = L.markerClusterGroup();
+         var lineMarkers = L.markerClusterGroup();
+         var heatmapGroup = L.layerGroup(); // Group to manage heatmaps
+         var top10Layer = L.layerGroup();
+         var playInterval;
+         var isPlaying = false;
+         var colorBarControl = L.control({position: 'bottomright'});
+
+
+         // Initialize icons and markers
+         var initialZoom = map.getZoom();
+         updateIconSize(initialZoom);
+
+         // Without clustering
+         var genMarkersClustered = L.layerGroup(); 
+         var loadMarkersClustered = L.layerGroup(); 
+         var substationMarkersClustered = L.layerGroup(); 
+         var busMarkersClustered = L.layerGroup(); 
+
+         genPointsData.forEach(function(point) {
+             var customIcon = loadGeneratorIcon(point.popup.gen_type); // Load icon based on generator type
+             var marker = L.marker(point.location, { icon: customIcon });            
+                 marker.on('click', function() {
+                    var start_date = document.getElementById('start_date').value;
+                    var end_date = document.getElementById('end_date').value;
+               
+                    if (!start_date || !end_date) {
+                        alert('Please select both start and end dates.');
+                        return;
+                    }
+   
+                    var latitude = point.location[0];
+                    var longitude = point.location[1];
+                    var type = 'gen'; 
+                    var pgen = point.popup.pgen;
+                    var qgen = point.popup.qgen;
+                    var gen_type = point.popup.gen_type
+
+                    var plotUrl = `/plot?lat=${latitude}&lon=${longitude}&type=${type}&pgen=${pgen}&gen_type=${gen_type}&qgen=${qgen}&start_date=${start_date}&end_date=${end_date}`;
+               
+                    // Open the plot.html in a new window or tab
+                    window.open(plotUrl, 'plotWindow', 'width=1500,height=1000');
+                });
+
+             genMarkers.addLayer(marker);
+             genMarkersClustered.addLayer(marker); // Add to both clusters and non-clustered layers initially
+         });
+
+         loadPointsData.forEach(function(point) {
+             var customIcon = loadIcon('Load'); // Load icon for load
+             var marker = L.marker(point.location, { icon: customIcon });
+           
+             marker.on('click', function() {
+                 var start_date = document.getElementById('start_date').value;
+                 var end_date = document.getElementById('end_date').value;
+            
+                 if (!start_date || !end_date) {
+                     alert('Please select both start and end dates.');
+                     return;
+                 }
+
+                 var latitude = point.location[0];
+                 var longitude = point.location[1];
+                 var pl = point.popup.pl;
+                 var ql = point.popup.ql;
+                 var type = 'load'; 
+
+                 var plotUrl = `/plot?lat=${latitude}&lon=${longitude}&pl=${pl}&ql=${ql}&type=${type}&start_date=${start_date}&end_date=${end_date}`;
+            
+                 // Open the plot.html in a new window or tab
+                 window.open(plotUrl, 'plotWindow', 'width=1500,height=1000');
+             });
+            
+            
+             loadMarkers.addLayer(marker);
+             loadMarkersClustered.addLayer(marker); // Add to both clusters and non-clustered layers initially
+         });
+
+         substationPointsData.forEach(function(point) {
+             var customIcon = loadIcon('Substation'); // Load icon for substation
+             var marker = L.marker(point.location, { icon: customIcon });
+             
+                 marker.on('click', function() {
+                    var start_date = document.getElementById('start_date').value;
+                    var end_date = document.getElementById('end_date').value;
+               
+                    if (!start_date || !end_date) {
+                        alert('Please select both start and end dates.');
+                        return;
+                    }
+   
+                    var latitude = point.location[0];
+                    var longitude = point.location[1];
+                    var type = 'substation'; 
+   
+                    var plotUrl = `/plot?lat=${latitude}&lon=${longitude}&type=${type}&start_date=${start_date}&end_date=${end_date}`;
+               
+                    // Open the plot.html in a new window or tab
+                    window.open(plotUrl, 'plotWindow', 'width=1500,height=1000');
+                });
+                
+             substationMarkers.addLayer(marker);
+             substationMarkersClustered.addLayer(marker); // Add to both clusters and non-clustered layers initially
+         });
+
+         busPointsData.forEach(function(point) {
+             var customIcon = loadIcon('Bus'); // Load icon for bus
+             var marker = L.marker(point.location, { icon: customIcon });
+             
+             marker.on('click', function() {
+                 var start_date = document.getElementById('start_date').value;
+                 var end_date = document.getElementById('end_date').value;
+           
+                 if (!start_date || !end_date) {
+                     alert('Please select both start and end dates.');
+                     return;
+                 }
+
+                 var latitude = point.location[0];
+                 var longitude = point.location[1];
+                 var type = 'node'; 
+                 var plotUrl = `/plot?lat=${latitude}&lon=${longitude}&type=${type}&start_date=${start_date}&end_date=${end_date}`;
+           
+                 // Open the plot.html in a new window or tab
+                 window.open(plotUrl, 'plotWindow', 'width=1500,height=1000');
+             });
+
+             busMarkers.addLayer(marker);
+             busMarkersClustered.addLayer(marker); // Add to both clusters and non-clustered layers initially
+         });
+
+         // Initially show generators, loads, substations, buses, and top 10 points
+         genMarkers.addTo(map);
+         loadMarkers.addTo(map);
+         substationMarkers.addTo(map);
+         busMarkers.addTo(map);
+
+         // Attach the zoomend event listener
+         map.on('zoomend', function() {
+             var currentZoom = map.getZoom();
+             updateIconSize(currentZoom);
+         });
+        
+         // Define and initialize heatmaps data
+        var heatmaps = {{ heatmaps|tojson }};
+
+        function showHeatmap(index) {
+            if (!heatmaps || heatmaps.length === 0) {
+                console.error('No heatmaps data available.');
+                return;
+            }
+
+            // Clear previous heatmaps
+            heatmapGroup.clearLayers();
+
+            var heatmap = heatmaps[index];
+            var newHeatmapOverlay = L.imageOverlay(heatmap.image_path, [[30, -130], [58, -100]]);
+            newHeatmapOverlay.addTo(heatmapGroup); // Add new heatmap to the group
+
+            top10Layer.clearLayers(); // Clear previous top 10 points
+            heatmap.top_10_points.forEach(function(point) {
+                if (point.length >= 3 && typeof point[0] === 'number' && typeof point[1] === 'number' && typeof point[2] === 'number') {
+                    var circle = L.circleMarker([point[0], point[1]], {
+                        radius: 5,
+                        color: 'red'
+                    });
+
+                    var temperature = point[2].toFixed(2);
+                    circle.bindPopup("Temperature: " + temperature + "°C");
+
+                    top10Layer.addLayer(circle);
+                } else {
+                    console.error("Invalid point:", point);
+                }
+            });
+
+            top10Layer.addTo(map);
+            document.getElementById('current-date').textContent = heatmap.date;
+        }
+
+        function startPlayback() {
+            if (!isPlaying && heatmaps.length > 0) {
+                isPlaying = true;
+                playInterval = setInterval(function() {
+                    var currentIndex = parseInt(document.getElementById('time-bar').value, 10);
+                    var nextIndex = (currentIndex + 1) % heatmaps.length;
+                    document.getElementById('time-bar').value = nextIndex;
+                    showHeatmap(nextIndex);
+                }, 1000); // Change every second (1000 ms)
+                document.getElementById('play-pause-button').textContent = 'Pause';
+            }
+        }
+
+        function stopPlayback() {
+            if (isPlaying) {
+                clearInterval(playInterval);
+                isPlaying = false;
+                document.getElementById('play-pause-button').textContent = 'Play';
+            }
+        }
+
+        document.getElementById('time-bar').addEventListener('input', function() {
+            var index = parseInt(this.value, 10);
+            showHeatmap(index);
+        });
+
+        document.getElementById('play-pause-button').addEventListener('click', function() {
+            if (isPlaying) {
+                stopPlayback();
+            } else {
+                startPlayback();
+            }
+        });
+
+        // Event listener for the heatmap type dropdown
+        document.getElementById('heatmap-type').addEventListener('change', function() {
+            var selectedType = parseInt(this.value, 10);
+            var startDate = document.getElementById('start_date').value;
+            var endDate = document.getElementById('end_date').value;
+            
+            updateColorBar(selectedType);
+
+
+            // Send an AJAX request to the backend to get the heatmaps and top10Layer for the selected type
+            fetch('{{ url_for("get_heatmap_data") }}', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    heatmap_index: selectedType,
+                    start_date: startDate,
+                    end_date: endDate
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Update heatmaps and top10Layer with the data returned from the server
+                heatmaps = data.heatmaps;
+                top10Layer.clearLayers(); // Clear the existing top 10 points
+        
+                // Recreate top 10 points with new data
+                heatmaps[0].top_10_points.forEach(function(point) {
+                    var circle = L.circleMarker([point[0], point[1]], {
+                        radius: 5,
+                        color: 'red'
+                    });
+        
+                    var temperature = point[2].toFixed(2);
+                    circle.bindPopup("Temperature: " + temperature + "°C");
+        
+                    top10Layer.addLayer(circle);
+                });
+        
+                // Update the map with the new heatmap
+                showHeatmap(0);
+        
+                // Reset the time-bar and show the first heatmap of the selected type
+                document.getElementById('time-bar').max = heatmaps.length - 1;
+                document.getElementById('time-bar').value = 0;
+                showHeatmap(0);
+            })
+            .catch(error => console.error('Error:', error));
+        });
+
+        // Function to toggle marker clustering based on checkbox
+        function toggleMarkerCluster() {
+            var isChecked = document.getElementById('cluster-checkbox').checked;
+
+            // List of component layers
+            var layers = [
+                {clustered: genMarkersClustered, nonClustered: genMarkers, name: "Generators"},
+                {clustered: loadMarkersClustered, nonClustered: loadMarkers, name: "Loads"},
+                {clustered: substationMarkersClustered, nonClustered: substationMarkers, name: "Substations"},
+                {clustered: busMarkersClustered, nonClustered: busMarkers, name: "Buses"}
+            ];
+
+            layers.forEach(function(layer) {
+                // If clustered layer is present, replace with non-clustered layer
+                if (isChecked) {
+                    if (map.hasLayer(layer.clustered) && !map.hasLayer(layer.nonClustered)) {
+                        map.removeLayer(layer.clustered);
+                        map.addLayer(layer.nonClustered);
+                    }
+                } else {
+                    // If non-clustered layer is present, replace with clustered layer
+                    if (map.hasLayer(layer.nonClustered) && !map.hasLayer(layer.clustered)) {
+                        map.removeLayer(layer.nonClustered);
+                        map.addLayer(layer.clustered);
+                    }
+                }
+            });
+
+            // Remove heatmap layers when checkbox is unchecked
+            if (!isChecked) {
+                map.removeLayer(heatmapGroup);
+                heatmapGroup.clearLayers(); // Clear heatmap layers
+            }
+        }
+
+        // Function to handle layer add event
+        function onLayerAdd(event) {
+            var layer = event.layer;
+            var isChecked = document.getElementById('cluster-checkbox').checked;
+
+            // List of component layers
+            var layers = [
+                {clustered: genMarkersClustered, nonClustered: genMarkers, name: "Generators"},
+                {clustered: loadMarkersClustered, nonClustered: loadMarkers, name: "Loads"},
+                {clustered: substationMarkersClustered, nonClustered: substationMarkers, name: "Substations"},
+                {clustered: busMarkersClustered, nonClustered: busMarkers, name: "Buses"}
+            ];
+
+            layers.forEach(function(l) {
+                if (layer === l.clustered || layer === l.nonClustered) {
+                    // Ensure only the correct layer is added based on checkbox state
+                    if (isChecked && map.hasLayer(l.nonClustered)) {
+                        map.addLayer(l.nonClustered);
+                        map.removeLayer(l.clustered);
+                    } else if (!isChecked && map.hasLayer(l.clustered)) {
+                        map.addLayer(l.clustered);
+                        map.removeLayer(l.nonClustered);
+                    }
+                }
+            });
+        }
+
+        // Function to handle layer remove event
+        function onLayerRemove(event) {
+            var layer = event.layer;
+
+            // List of component layers
+            var layers = [
+                {clustered: genMarkersClustered, nonClustered: genMarkers, name: "Generators"},
+                {clustered: loadMarkersClustered, nonClustered: loadMarkers, name: "Loads"},
+                {clustered: substationMarkersClustered, nonClustered: substationMarkers, name: "Substations"},
+                {clustered: busMarkersClustered, nonClustered: busMarkers, name: "Buses"}
+            ];
+
+            layers.forEach(function(l) {
+                if (layer === l.clustered || layer === l.nonClustered) {
+                    // Remove both clustered and non-clustered layers
+                    map.removeLayer(l.clustered);
+                    map.removeLayer(l.nonClustered);
+                }
+            });
+        }
+
+        // Add event listeners for layer add and remove
+        map.on('layeradd', onLayerAdd);
+        map.on('layerremove', onLayerRemove);
+
+        
+        // Variable to store BA layers
+        var BA_LayerGroup = L.layerGroup();
+
+        // Handle the "Show BAs" checkbox toggle
+        map.on('overlayadd', function(eventLayer) {
+            if (eventLayer.name === 'Show BAs') {
+                // Fetch and display the BA data
+                fetchBAData();
+            }
+        });
+
+        map.on('overlayremove', function(eventLayer) {
+            if (eventLayer.name === 'Show BAs') {
+                // Clear BA_LayerGroup when "Show BAs" is unchecked
+                BA_LayerGroup.clearLayers();
+            }
+        });
+
+       
+        // Global object to keep track of chart instances
+        var chartInstances = {};
+
+        function handleBADemandClick(areaName, startDate, endDate) {
+            // Hide all tab contents
+            document.querySelectorAll('.tabcontent').forEach(function(tab) {
+                tab.style.display = 'none';
+            });
+            // Show the correct tab
+            document.getElementById(`BADChart-${areaName}`).style.display = 'block';
+        
+            // Fetch data for the specific BA
+            fetch('/get_BAs_data', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    ba_name: areaName,
+                    start_date: startDate,
+                    end_date: endDate
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                const baData = data.find(ba => ba.area_name === areaName);
+                let demandData = baData.demand_by_ba;
+                var BADchartHasData = demandData && Object.keys(demandData).length > 0;
+        
+                if (BADchartHasData) {
+                    var totalPlValues = [], totalQlValues = [], labels = [], elementCount = 0;
+        
+                    for (var date in demandData) {
+                        if (demandData.hasOwnProperty(date)) {
+                            labels.push(date);
+                            totalPlValues.push(demandData[date].total_Pl || 0);
+                            totalQlValues.push(demandData[date].total_Ql || 0);
+                            elementCount = demandData[date].count || 0;
+                        }
+                    }
+        
+                    var BADchartData = {
+                        labels: labels,
+                        datasets: [
+                            {
+                                label: 'Total PL',
+                                data: totalPlValues,
+                                backgroundColor: 'rgba(75, 192, 192, 0.5)',
+                                borderColor: 'rgba(75, 192, 192, 1)',
+                                borderWidth: 1
+                            },
+                            {
+                                label: `Total QL *Count of elements: ${elementCount}*`,
+                                data: totalQlValues,
+                                backgroundColor: 'rgba(153, 102, 255, 0.5)',
+                                borderColor: 'rgba(153, 102, 255, 1)',
+                                borderWidth: 1
+                            }
+                        ]
+                    };
+        
+                    // Destroy previous chart instance if it exists
+                    if (chartInstances[areaName]) {
+                        chartInstances[areaName].destroy();
+                    }
+        
+                    // Set the canvas size explicitly
+                    var canvasElement = document.getElementById(`myBADChart-${areaName}`);
+                    canvasElement.width = 600;
+                    canvasElement.height = 260;
+        
+                    // Create chart
+                    var ctxBAD = canvasElement.getContext('2d');
+                    chartInstances[areaName] = new Chart(ctxBAD, {
+                        type: 'bar',
+                        data: BADchartData,
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            plugins: {
+                                legend: {
+                                    labels: {
+                                        font: {
+                                            family: 'Times New Roman',
+                                            size: 10
+                                        }
+                                    }
+                                }
+                            },
+                            title: {
+                                display: true,
+                                text: 'Demand by Balancing Authority',
+                                font: {
+                                    family: 'Times New Roman',
+                                    size: 10
+                                }
+                            },
+                            scales: {
+                                x: {
+                                    title: {
+                                        display: true,
+                                        text: 'Date',
+                                        font: {
+                                            family: 'Times New Roman',
+                                            size: 12
+                                        }
+                                    }
+                                },
+                                y: {
+                                    title: {
+                                        display: true,
+                                        text: 'Total Demand',
+                                        font: {
+                                            family: 'Times New Roman',
+                                            size: 12
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    });
+        
+                    // Ensure chart resizes correctly after being shown
+                    chartInstances[areaName].resize();
+                } else {
+                    console.log('No data available for demand chart');
+                }
+            })
+            .catch(error => console.error('Error fetching demand data:', error));
+        }
+        
+
+        var chartInstancesG = {};
+        // Function to handle clicking on the BA generation tab
+        function handleBAGenClick(areaName, startDate, endDate) {
+
+            // Make sure the correct tab is activated when clicked
+            document.querySelectorAll('.tabcontent').forEach(function(tab) {
+                tab.style.display = 'none';
+            });
+            document.getElementById(`BADGenChart-${areaName}`).style.display = 'block';
+
+            // Fetch data for the specific BA
+            fetch('/get_BAs_data', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    ba_name: areaName,
+                    start_date: startDate,
+                    end_date: endDate
+                })
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                const baData = data.find(ba => ba.area_name === areaName);
+                let genData = baData.gen_by_ba;
+                var BADGchartHasData = genData && Object.keys(genData).length > 0;
+
+                if (BADGchartHasData) {
+                    var Storage = []; // Initialize array for Total storage in BA
+                    var Fossil_Gen = []; // Initialize array for Total fossil fueled generation in BA
+                    var Renewable = []; // Initialize array for Total renewable generation in BA
+                    var Hydro = []; // Initialize array for Total hydro generation in BA
+                    var Solar = []; // Initialize array for Total solar generation in BA
+                    var Wind = []; // Initialize array for Total wind generation in BA
+                    var Total_Pg = []; // Initialize array for Total reactive power in BA
+                    var Total_Qg = []; // Initialize array for Total reactive power in BA
+                    var labels = []; // Initialize array for labels (dates)
+                    var elementCount = 0; // Initialize element count
+
+                    // Iterate through the demandData to extract values
+                    for (var date in genData) {
+                        if (genData.hasOwnProperty(date)) {
+                            labels.push(date); // Collect the date for labels
+                            Total_Pg.push(genData[date].total_pgen || 0); // Fallback to 0 if undefined
+                            Total_Qg.push(genData[date].total_qgen || 0); // Fallback to 0 if undefined
+                            Storage.push(genData[date].total_Storage || 0); // Fallback to 0 if undefined
+                            Fossil_Gen.push(genData[date].total_fossil || 0); // Fallback to 0 if undefined
+                            Renewable.push(genData[date].total_Renw || 0); // Fallback to 0 if undefined
+                            Hydro.push(genData[date].total_Hydro || 0); // Fallback to 0 if undefined
+                            Solar.push(genData[date].total_Solar || 0); // Fallback to 0 if undefined
+                            Wind.push(genData[date].total_Wind || 0); // Fallback to 0 if undefined
+                            elementCount = genData[date].count || 0; // Update element count
+                        }
+                    }
+
+                    // Create the chart data structure
+                    var BADGchartData = {
+                        labels: labels,
+                        datasets: [
+                        {
+                            label: 'Total Pg',
+                            data: Total_Pg,
+                            backgroundColor: 'rgba(75, 192, 192, 0.5)', // Light teal color
+                            borderColor: 'rgba(75, 192, 192, 1)', // Darker teal color
+                            borderWidth: 1
+                        },
+                        {
+                            label: 'Total Qg', 
+                            data: Total_Qg,
+                            backgroundColor: 'rgba(153, 102, 255, 0.5)', // Light purple color
+                            borderColor: 'rgba(153, 102, 255, 1)', // Darker purple color
+                            borderWidth: 1
+                        },
+                        {
+                            label: 'Storage',
+                            data: Storage,
+                            backgroundColor: 'rgba(255, 159, 64, 0.5)', // Light orange color
+                            borderColor: 'rgba(255, 159, 64, 1)', // Darker orange color
+                            borderWidth: 1
+                        },
+                        {
+                            label: 'Fossil Gen',
+                            data: Fossil_Gen,
+                            backgroundColor: 'rgba(54, 162, 235, 0.5)', // Light blue color
+                            borderColor: 'rgba(54, 162, 235, 1)', // Darker blue color
+                            borderWidth: 1
+                        },
+                        {
+                            label: 'Renewable',
+                            data: Renewable,
+                            backgroundColor: 'rgba(255, 206, 86, 0.5)', // Light yellow color
+                            borderColor: 'rgba(255, 206, 86, 1)', // Darker yellow color
+                            borderWidth: 1
+                        },
+                        {
+                            label: 'Hydro',
+                            data: Hydro,
+                            backgroundColor: 'rgba(255, 182, 193, 0.5)', // Light pink color
+                             borderColor: 'rgba(255, 182, 193, 1)', // Darker pink color
+                            borderWidth: 1
+                        },
+                        {
+                            label: 'Solar',
+                            data: Solar,
+                            backgroundColor: 'rgba(255, 99, 132, 0.5)', // Light red color
+                            borderColor: 'rgba(255, 99, 132, 1)', // Darker red color
+                            borderWidth: 1
+                        },
+                        {
+                            label: `Wind *Count of elements: ${elementCount}*`, 
+                            data: Wind,
+                            backgroundColor: 'rgba(100, 181, 246, 0.5)', // Light sky blue color
+                            borderColor: 'rgba(100, 181, 246, 1)', // Darker sky blue color
+                            borderWidth: 1
+                        }                        
+                        ]
+                    };
+
+                    
+                    // Destroy the previous chart instance if it exists
+                    if (chartInstancesG[areaName]) {
+                        chartInstancesG[areaName].destroy();
+                    }
+
+                    // Set the canvas size explicitly
+                    var canvasElement = document.getElementById(`myBADGenChart-${areaName}`);
+                    canvasElement.width = 600;
+                    canvasElement.height = 260;
+
+                    // Create chart
+                    var ctxBADG = canvasElement.getContext('2d');
+                    chartInstancesG[areaName] = new Chart(ctxBADG, {
+                        type: 'bar',
+                        data: BADGchartData,
+                        options: {
+                            plugins: {
+                                legend: {
+                                    labels: {
+                                        font: {
+                                            family: 'Times New Roman',
+                                            size: 10
+                                        }
+                                    }
+                                }
+                            },
+                            title: {
+                                display: true,
+                                text: 'Gen by Balancing Authority',
+                                font: {
+                                    family: 'Times New Roman',
+                                    size: 10
+                                }
+                            },
+                            scales: {
+                                x: {
+                                    title: {
+                                        display: true,
+                                        text: 'Date',
+                                        font: {
+                                            family: 'Times New Roman',
+                                            size: 12
+                                        }
+                                    }
+                                },
+                                y: {
+                                    title: {
+                                        display: true,
+                                        text: 'Total Gen',
+                                        font: {
+                                            family: 'Times New Roman',
+                                            size: 12
+                                        }
+                                    },
+                                    min: 0 // Set the minimum value for y-axis to 0
+                                }
+                            }
+                        }
+                    });
+                    
+
+                    // Ensure chart resizes correctly after being shown
+                    chartInstancesG[areaName].resize();
+                } else {
+                    console.log('No data available for gen chart');
+                }
+            })
+            .catch(error => console.error('Error fetching gen data:', error));
+        }
+
+        var chartInstancesT = {};
+        var chartInstancesT2 = {};
+        var chartInstancesT3 = {};
+        
+        function fetchBAData() {
+            // Get the start and end dates from the HTML input fields
+            var startDate = document.getElementById('start_date').value;
+            var endDate = document.getElementById('end_date').value;
+        
+            fetch('/get_BAs_shape', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    start_date: startDate,
+                    end_date: endDate
+                })
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                data.forEach(function(ba) {
+                    var polygon = L.geoJSON(ba.geojson, {
+                        style: function() {
+                            return { color: ba.area_color };
+                        }
+                    }).addTo(BA_LayerGroup);
+        
+                    // Add onClick event to each polygon
+                    polygon.on('click', function (e) {
+                        // Clear existing popup
+                        this.unbindPopup();
+                        
+                        // Get the click event location (latlng)
+                        var clickLocation = this.getBounds().getCenter();
+                        clickLocation.lat += 0;
+                        clickLocation.lng += -12;
+        
+                        var areaName = ba.area_name; // The name of the area
+
+                        fetch('/get_BAs_data', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({
+                                start_date: startDate,
+                                end_date: endDate
+                            })
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            // Find the matching BA data based on the clicked area's name
+                            var matchingBA = data.find(d => d.area_name === areaName);
+                            if (matchingBA) {
+                                                    
+                                var columnOrder = matchingBA.ColumnOrder;
+                                const totalColumns = columnOrder.length;
+                                const baseWidth = 100 / (totalColumns + 7);
+                                const largeWidth = baseWidth * 4;
+                                const avgWidth = baseWidth * 2;
+                    
+                                let eventsByYear = {};
+                                let eventsByYearMonth = {}; // Object to store events grouped by month
+                                let eventsByYearQuarter = {}; // Object to store events grouped by quarter
+            
+                    
+                                const hasHighestLevelDeclared = columnOrder.includes('Highest Level Declared');
+                                const hasAlert = columnOrder.includes('Alert');
+                    
+                                let eventsTable = `
+                                <table style="width: 100%; table-layout: fixed;">
+                                    <thead>
+                                        <tr>
+                                `;
+                    
+                                columnOrder.forEach(key => {
+                                    let columnWidth;
+                                    if (key === 'Comment(s)') {
+                                        columnWidth = `${largeWidth}%`;
+                                    } else if (['End Date', 'Start Date', 'Count of Events'].includes(key)) {
+                                        columnWidth = `${avgWidth}%`;
+                                    } else {
+                                        columnWidth = `${baseWidth}%`;
+                                    }
+                                    eventsTable += `<th style="width: ${columnWidth}; text-align: left; padding: 5px;">${key}</th>`;
+                                });
+                    
+                                eventsTable += `
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                `;
+                    
+                                let hasEvents = false;
+                    
+                                matchingBA.Events.forEach(event => {
+                                    hasEvents = true;
+                                    eventsTable += `<tr>`;
+                                    columnOrder.forEach(key => {
+                                        let value = event[key];
+                                        if ((key === 'length in minutes' || key === 'Length in Hours') && typeof value === 'number') {
+                                            value = value.toFixed(2);
+                                        }
+                                        eventsTable += `<td style="padding: 5px;">${value}</td>`;
+                                    });
+                                    eventsTable += `</tr>`;
+                    
+                                    // Group events by year and sum up EEA1, EEA2, EEA3 counts
+                                    const year = event['Year'];
+                                    const monthName = event['Month'];
+                                    const QuarterName = event['Quarter'];
+                                    
+                                    // Mapping month names to numbers
+                                    const monthMapping = {
+                                        "January": "01",
+                                        "February": "02",
+                                        "March": "03",
+                                        "April": "04",
+                                        "May": "05",
+                                        "June": "06",
+                                        "July": "07",
+                                        "August": "08",
+                                        "September": "09",
+                                        "October": "10",
+                                        "November": "11",
+                                        "December": "12"
+                                    };
+            
+                                    const QuarterMapping = {
+                                        "Q1": "Q1",
+                                        "Q2": "Q2",
+                                        "Q3": "Q3",
+                                        "Q4": "Q4"
+                                    };
+                                    
+                                    const month = monthMapping[monthName];
+                                    const quarter = QuarterMapping[QuarterName];
+                                    const yearMonth = `${year}-${month}`; // Format as "YYYY-MM"
+                                    const yearQuarter = `${year}-${quarter}`; // Format as "YYYY-Q"
+            
+            
+                                    if (!eventsByYear[year]) {
+                                        eventsByYear[year] = { EEA1: 0, EEA2: 0, EEA3: 0 };
+                                    }
+            
+                                    if (!eventsByYearMonth[yearMonth]) {
+                                        eventsByYearMonth[yearMonth] = { EEA1: 0, EEA2: 0, EEA3: 0 };
+                                    }
+            
+                                    if (!eventsByYearQuarter[yearQuarter]) {
+                                        eventsByYearQuarter[yearQuarter] = { EEA1: 0, EEA2: 0, EEA3: 0 };
+                                    }
+            
+                                    if (hasHighestLevelDeclared) {
+                                        if (event['Highest Level Declared'] === 'EEA1') {
+                                            eventsByYear[year].EEA1 += event['Count of Events'];
+                                            eventsByYearMonth[yearMonth].EEA1 += event['Count of Events'];
+                                            eventsByYearQuarter[yearQuarter].EEA1 += event['Count of Events'];
+                                        } else if (event['Highest Level Declared'] === 'EEA2') {
+                                            eventsByYear[year].EEA2 += event['Count of Events'];
+                                            eventsByYearMonth[yearMonth].EEA2 += event['Count of Events'];
+                                            eventsByYearQuarter[yearQuarter].EEA2 += event['Count of Events'];
+                                        } else if (event['Highest Level Declared'] === 'EEA3') {
+                                            eventsByYear[year].EEA3 += event['Count of Events'];
+                                            eventsByYearMonth[yearMonth].EEA3 += event['Count of Events'];
+                                            eventsByYearQuarter[yearQuarter].EEA3 += event['Count of Events'];
+                                        }
+                                    } else if (hasAlert) {
+                                        eventsByYear[year].EEA1 += event['Stage 1 Emergency'] || 0;
+                                        eventsByYear[year].EEA2 += event['Stage 2 Emergency'] || 0;
+                                        eventsByYear[year].EEA3 += event['Stage 3 Emergency'] || 0;
+            
+                                        eventsByYearMonth[yearMonth].EEA1 += event['Stage 1 Emergency'] || 0;
+                                        eventsByYearMonth[yearMonth].EEA2 += event['Stage 2 Emergency'] || 0;
+                                        eventsByYearMonth[yearMonth].EEA3 += event['Stage 3 Emergency'] || 0;
+            
+                                        eventsByYearQuarter[yearQuarter].EEA1 += event['Stage 1 Emergency'] || 0;
+                                        eventsByYearQuarter[yearQuarter].EEA2 += event['Stage 2 Emergency'] || 0;
+                                        eventsByYearQuarter[yearQuarter].EEA3 += event['Stage 3 Emergency'] || 0;
+                                    }
+                                });
+                    
+                                eventsTable += `
+                                    </tbody>
+                                </table>
+                                `;
+                    
+                                const years = Object.keys(eventsByYear);
+                                const eea1Data = years.map(year => eventsByYear[year].EEA1);
+                                const eea2Data = years.map(year => eventsByYear[year].EEA2);
+                                const eea3Data = years.map(year => eventsByYear[year].EEA3);
+            
+                                // Extract year-month and EEA data for plotting
+                                const yearMonths = Object.keys(eventsByYearMonth);
+                                const eea1DataM = yearMonths.map(ym => eventsByYearMonth[ym].EEA1);
+                                const eea2DataM = yearMonths.map(ym => eventsByYearMonth[ym].EEA2);
+                                const eea3DataM = yearMonths.map(ym => eventsByYearMonth[ym].EEA3);
+            
+                                // Extract year-quarter and EEA data for plotting
+                                const yearQuarters = Object.keys(eventsByYearQuarter);
+                                const eea1DataQ = yearQuarters.map(qm => eventsByYearQuarter[qm].EEA1);
+                                const eea2DataQ = yearQuarters.map(qm => eventsByYearQuarter[qm].EEA2);
+                                const eea3DataQ = yearQuarters.map(qm => eventsByYearQuarter[qm].EEA3);
+                    
+                                var chartData = {
+                                    labels: years,
+                                    datasets: [
+                                        {
+                                            label: 'EEA1',
+                                            data: eea1Data,
+                                            backgroundColor: '#FF6384',
+                                            barThickness: 30
+                                        },
+                                        {
+                                            label: 'EEA2',
+                                            data: eea2Data,
+                                            backgroundColor: '#36A2EB',
+                                            barThickness: 30
+                                        },
+                                        {
+                                            label: 'EEA3',
+                                            data: eea3Data,
+                                            backgroundColor: '#FFCE56',
+                                            barThickness: 30
+                                        }
+                                    ]
+                                };
+            
+                                // Prepare the chart data
+                                var chartDataM = {
+                                    labels: yearMonths, // Labels in the format "YYYY-MM"
+                                    datasets: [
+                                        {
+                                            label: 'EEA1',
+                                            data: eea1DataM,
+                                            backgroundColor: '#FF6384',
+                                            barThickness: 30
+                                        },
+                                        {
+                                            label: 'EEA2',
+                                            data: eea2DataM,
+                                            backgroundColor: '#36A2EB',
+                                            barThickness: 30
+                                        },
+                                        {
+                                            label: 'EEA3',
+                                            data: eea3DataM,
+                                            backgroundColor: '#FFCE56',
+                                            barThickness: 30
+                                        }
+                                    ]
+                                };
+            
+                                // Prepare the chart data
+                                var chartDataQ = {
+                                    labels: yearQuarters, // Labels in the format "YYYY-MM"
+                                    datasets: [
+                                        {
+                                            label: 'EEA1',
+                                            data: eea1DataQ,
+                                            backgroundColor: '#FF6384',
+                                            barThickness: 30
+                                        },
+                                        {
+                                            label: 'EEA2',
+                                            data: eea2DataQ,
+                                            backgroundColor: '#36A2EB',
+                                            barThickness: 30
+                                        },
+                                        {
+                                            label: 'EEA3',
+                                            data: eea3DataQ,
+                                            backgroundColor: '#FFCE56',
+                                            barThickness: 30
+                                        }
+                                    ]
+                                };
+                    
+                                let chartHasData = eea1Data.length > 0 || eea2Data.length > 0 || eea3Data.length > 0;
+            
+                                let chartHasDataM = eea1DataM.length > 0 || eea2DataM.length > 0 || eea3DataM.length > 0;
+            
+                                let chartHasDataQ = eea1DataQ.length > 0 || eea2DataQ.length > 0 || eea3DataQ.length > 0;
+                    
+                                // Bind the popup with dynamic content for events data
+                                var popup = this.bindPopup(
+                                    `<div class="popup-container" id="popup-${matchingBA.area_name}">
+                                        <h3 style="margin: 0;">${matchingBA.area_name}</h3>
+                                        <div class="tab">
+                                            <button class="tablinks" onclick="openTab(event, 'Table-${matchingBA.area_name}')">Events Table</button>
+                                            <button class="tablinks active" onclick="openTab(event, 'Chart-${matchingBA.area_name}')">Chart</button>
+                                            <button class="tablinks" onclick="openTab(event, 'MonthlyChart-${matchingBA.area_name}')">Monthly Chart</button>
+                                            <button class="tablinks" onclick="openTab(event, 'QuarterlyChart-${matchingBA.area_name}')">Quarterly Chart</button>
+                                            <button class="tablinks" onclick="openTab(event, 'BADChart-${matchingBA.area_name}'); handleBADemandClick('${ba.area_name}', '${startDate}', '${endDate}')">
+                                                ${matchingBA.area_name} Demand
+                                            </button>
+                                            <button class="tablinks" onclick="openTab(event, 'BADGenChart-${matchingBA.area_name}'); handleBAGenClick('${ba.area_name}', '${startDate}', '${endDate}')">
+                                                ${matchingBA.area_name} Gen
+                                            </button>
+                                        </div>
+                                        <div id="Table-${matchingBA.area_name}" class="tabcontent" style="display:none;">
+                                            ${hasEvents ? eventsTable : `<p style="margin: 0;">No Events Available</p>`}
+                                        </div>
+                                        <div id="Chart-${matchingBA.area_name}" class="tabcontent" style="display:block;">
+                                            ${chartHasData ? `<canvas id="myChart-${matchingBA.area_name}" style="width: 600px; height: 260px;"></canvas>` : `<p style="margin: 0;">No Events Available</p>`}
+                                        </div>
+                                        <div id="MonthlyChart-${matchingBA.area_name}" class="tabcontent" style="display:none;">
+                                            ${chartHasDataM ? `<canvas id="myMonthlyChart-${matchingBA.area_name}" style="width: 600px; height: 260px;"></canvas>` : `<p style="margin: 0;">No Events Available</p>`}
+                                        </div>
+                                        <div id="QuarterlyChart-${matchingBA.area_name}" class="tabcontent" style="display:none;">
+                                            ${chartHasDataM ? `<canvas id="myQuarterlyChart-${matchingBA.area_name}" style="width: 600px; height: 260px;"></canvas>` : `<p style="margin: 0;">No Events Available</p>`}
+                                        </div>
+                                        <div id="BADChart-${matchingBA.area_name}" class="tabcontent" style="display:none;">
+                                            <canvas id="myBADChart-${matchingBA.area_name}" style="width: 600px; height: 260px;"></canvas>
+                                        </div>
+                                        <div id="BADGenChart-${matchingBA.area_name}" class="tabcontent" style="display:none;">
+                                            <canvas id="myBADGenChart-${matchingBA.area_name}" style="width: 600px; height: 260px;"></canvas>
+                                        </div>
+                                    </div>`,
+                                    {
+                                        maxWidth: 'auto',
+                                        offset: [0, 0]
+                                    }
+                                ).on('popupopen', function () {
+                                    var popupContent = this.getPopup().getContent();
+                                    var popupContainer = document.getElementById(`popup-${ba.area_name}`);
+                    
+                                    if (popupContainer) {
+                                        var tabContainer = popupContainer.querySelector('.tab');
+                                        var activeTab = tabContainer.querySelector('.tablinks.active').textContent.trim();
+                                        console.log("Active Tab:", activeTab); // Log the active tab to the console
+                    
+                                        var hasEvents = popupContainer.querySelector('.tabcontent').querySelectorAll('tr').length > 0;
+                    
+                                        if (hasEvents) {
+                                            popupContainer.classList.remove('popup-no-events');
+                                            if (activeTab === 'Chart' || activeTab === 'MonthlyChart' || activeTab === 'QuarterlyChart' || tabName.startsWith('BADChart') || tabName.startsWith('BADGenChart')) {
+                                                popupContainer.classList.add('popup-chart-size');
+                                                popupContainer.classList.remove('popup-table-size');
+                                            } else {
+                                                popupContainer.classList.add('popup-table-size');
+                                                popupContainer.classList.remove('popup-chart-size');
+                                            }
+                                        } else {
+                                            popupContainer.classList.remove('popup-chart-size');
+                                            popupContainer.classList.remove('popup-table-size');
+                                            popupContainer.classList.add('popup-no-events');
+                                        }
+                                        
+                                        
+
+                                        // Destroy the previous chart instance if it exists
+                                        if (chartInstancesT[matchingBA.area_name]) {
+                                            chartInstancesT[matchingBA.area_name].destroy();
+                                        }
+
+                                        if (chartInstancesT2[matchingBA.area_name]) {
+                                            chartInstancesT2[matchingBA.area_name].destroy();
+                                        }
+
+                                        if (chartInstancesT3[matchingBA.area_name]) {
+                                            chartInstancesT3[matchingBA.area_name].destroy();
+                                        }
+
+                                        if (chartHasData) {
+                                            // Set the canvas size explicitly
+                                            var canvasElement = document.getElementById(`myChart-${matchingBA.area_name}`);
+                                            canvasElement.width = 600;
+                                            canvasElement.height = 260;
+                                        
+                                            // Create chart
+                                            var ctx = canvasElement.getContext('2d');
+                                            chartInstancesT[matchingBA.area_name] = new Chart(ctx, {
+                                                type: 'bar',
+                                                data: chartData,
+                                                options: {
+                                                    plugins: {
+                                                        legend: {
+                                                            labels: {
+                                                                font: {
+                                                                    family: 'Times New Roman',
+                                                                    size: 14
+                                                                }
+                                                            }
+                                                        }
+                                                    },
+                                                    title: {
+                                                        display: true,
+                                                        text: 'Event Counts by EEA Level and Year',
+                                                        font: {
+                                                            family: 'Times New Roman',
+                                                            size: 18
+                                                        }
+                                                    },
+                                                    scales: {
+                                                        x: {
+                                                            title: {
+                                                                display: true,
+                                                                text: 'Year',
+                                                                font: {
+                                                                    family: 'Times New Roman',
+                                                                    size: 14
+                                                                }
+                                                            }
+                                                        },
+                                                        y: {
+                                                            title: {
+                                                                display: true,
+                                                                text: 'Count of Events',
+                                                                font: {
+                                                                    family: 'Times New Roman',
+                                                                    size: 14
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            });
+                                            // Ensure chart resizes correctly after being shown
+                                            if (chartInstancesT[matchingBA.area_name]) {
+                                                chartInstancesT[matchingBA.area_name].resize();
+                                            }
+                                        }
+            
+                                        if (chartHasDataM) {
+
+                                            // Set the canvas size explicitly
+                                            var canvasElement = document.getElementById(`myMonthlyChart-${matchingBA.area_name}`);
+                                            canvasElement.width = 600;
+                                            canvasElement.height = 260;
+
+                                            // Create chart
+                                            var ctxM = canvasElement.getContext('2d');
+                                            chartInstancesT2[matchingBA.area_name] = new Chart(ctxM, {
+                                                type: 'bar',
+                                                data: chartDataM,
+                                                options: {
+                                                    plugins: {
+                                                        legend: {
+                                                            labels: {
+                                                                font: {
+                                                                    family: 'Times New Roman',
+                                                                    size: 14
+                                                                }
+                                                            }
+                                                        }
+                                                    },
+                                                    title: {
+                                                        display: true,
+                                                        text: 'Event Counts by EEA Level and Month',
+                                                        font: {
+                                                            family: 'Times New Roman',
+                                                            size: 18
+                                                        }
+                                                    },
+                                                    scales: {
+                                                        x: {
+                                                            title: {
+                                                                display: true,
+                                                                text: 'Year',
+                                                                font: {
+                                                                    family: 'Times New Roman',
+                                                                    size: 14
+                                                                }
+                                                            }
+                                                        },
+                                                        y: {
+                                                            title: {
+                                                                display: true,
+                                                                text: 'Count of Events',
+                                                                font: {
+                                                                    family: 'Times New Roman',
+                                                                    size: 14
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            });
+                                            // Ensure chart resizes correctly after being shown
+                                            if (chartInstancesT2[matchingBA.area_name]) {
+                                                chartInstancesT2[matchingBA.area_name].resize();
+                                            }
+                                        }
+            
+                                        if (chartHasDataQ) {
+                                            // Set the canvas size explicitly
+                                            var canvasElement = document.getElementById(`myQuarterlyChart-${matchingBA.area_name}`);
+                                            canvasElement.width = 600;
+                                            canvasElement.height = 260;
+
+                                            // Create chart
+                                            var ctxQ = canvasElement.getContext('2d');
+                                            chartInstancesT3[matchingBA.area_name] = new Chart(ctxQ, {
+                                                type: 'bar',
+                                                data: chartDataQ,
+                                                options: {
+                                                    plugins: {
+                                                        legend: {
+                                                            labels: {
+                                                                font: {
+                                                                    family: 'Times New Roman',
+                                                                    size: 14
+                                                                }
+                                                            }
+                                                        }
+                                                    },
+                                                    title: {
+                                                        display: true,
+                                                        text: 'Event Counts by EEA Level and Quarter',
+                                                        font: {
+                                                            family: 'Times New Roman',
+                                                            size: 18
+                                                        }
+                                                    },
+                                                    scales: {
+                                                        x: {
+                                                            title: {
+                                                                display: true,
+                                                                text: 'Year',
+                                                                font: {
+                                                                    family: 'Times New Roman',
+                                                                    size: 14
+                                                                }
+                                                            }
+                                                        },
+                                                        y: {
+                                                            title: {
+                                                                display: true,
+                                                                text: 'Count of Events',
+                                                                font: {
+                                                                    family: 'Times New Roman',
+                                                                    size: 14
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            });
+                                            // Ensure chart resizes correctly after being shown
+                                            if (chartInstancesT3[matchingBA.area_name]) {
+                                                chartInstancesT3[matchingBA.area_name].resize();
+                                            }
+                                        }
+                                    }
+
+                                    // Delay adjustment to ensure the popup is rendered
+                                    setTimeout(() => {
+                                        var popupElement = popup._popup._contentNode;
+                                        var popupWidth = popupElement.clientWidth;
+                                        var popupHeight = popupElement.clientHeight;
+                                        var map = this._map;
+                    
+                                        // Calculate new offset to center the popup
+                                        var newOffset = [-popupWidth / 2, -popupHeight / 2];
+                    
+                                        // Apply the new offset to the popup
+                                       // popup.setOffset(newOffset);
+                    
+                                        // Adjust the map view to ensure the popup is fully visible
+                                        map.panTo(clickLocation, { animate: true });
+                                    }, 50); // Adjust delay as needed to ensure popup is fully rendered
+                                }).openPopup(clickLocation); // Open the popup at the click location
+                            }
+                        });
+                    });
+                    
+
+                });
+            })
+            .catch(error => console.error('Error fetching BA shapes:', error)); // Log any errors that occur during the fetch
+        }
+        
+        // Function to handle tab switching
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " active";
+
+            // Access the popup container using the tab's closest parent
+            var popupContainer = evt.currentTarget.closest('.popup-container');
+
+            // Check if the popup has no events
+            var hasEvents = popupContainer.querySelector('.tabcontent').querySelectorAll('tr').length > 0; // Check if there are any rows in the table
+
+            if (!hasEvents) {
+                // Ensure the other classes are removed
+                popupContainer.classList.remove('popup-chart-size');
+                popupContainer.classList.remove('popup-table-size');
+
+                popupContainer.classList.add('popup-no-events');
+                
+            } else {
+                popupContainer.classList.remove('popup-no-events');
+                if (tabName.startsWith('Chart') || tabName.startsWith('MonthlyChart') || tabName.startsWith('QuarterlyChart') || tabName.startsWith('BADChart') || tabName.startsWith('BADGenChart')) {
+                    popupContainer.classList.add('popup-chart-size');
+                    popupContainer.classList.remove('popup-table-size');
+                } else {
+                    popupContainer.classList.add('popup-table-size');
+                    popupContainer.classList.remove('popup-chart-size');
+                }
+            }
+        }
+
+
+
+        // Event listener for the checkbox
+        document.getElementById('cluster-checkbox').addEventListener('change', toggleMarkerCluster);
+
+         // Add layer control to the map
+         var baseLayers = {
+             "OpenStreetMap": L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                 maxZoom: 19,
+             })
+         };
+ 
+         var overlayLayers = {
+             "Generators": genMarkers, // Initially add clustered markers
+             "Loads": loadMarkers,
+             "Substations": substationMarkers,
+             "Buses": busMarkers,
+             "Heatmap": heatmapGroup,
+             "Top Hottest Extremes": top10Layer,
+             "Show BAs": BA_LayerGroup
+         };
+
+         L.control.layers(baseLayers, overlayLayers).addTo(map);
+
+         // Initially show generators
+         genMarkers.addTo(map);
+
+         // Create legend control
+        var legend = L.control({ position: 'bottomleft' });
+
+        legend.onAdd = function (map) {
+            var div = L.DomUtil.create('div', 'legend');
+            div.innerHTML += '<div class="legend-item"><img src="{{ url_for('static', filename='Storage.png') }}" class="legend-icon"> Battery Storage</div>';
+            div.innerHTML += '<div class="legend-item"><img src="{{ url_for('static', filename='Bio-ST.png') }}" class="legend-icon"> Bio-ST</div>';
+            div.innerHTML += '<div class="legend-item"><img src="{{ url_for('static', filename='CCWhole-NatGas-Aero.png') }}" class="legend-icon"> CCWhole-NatGas-Aero</div>';
+            div.innerHTML += '<div class="legend-item"><img src="{{ url_for('static', filename='CCWhole-NatGas-Industrial.png') }}" class="legend-icon"> CCWhole-NatGas-Industrial</div>';
+            div.innerHTML += '<div class="legend-item"><img src="{{ url_for('static', filename='CCWhole-NatGas-SingleShaft.png') }}" class="legend-icon"> CCWhole-NatGas-SingleShaft</div>';
+            div.innerHTML += '<div class="legend-item"><img src="{{ url_for('static', filename='CT-NatGas-Aero.png') }}" class="legend-icon"> CT-NatGas-Aero</div>';
+            div.innerHTML += '<div class="legend-item"><img src="{{ url_for('static', filename='CT-NatGas-Industrial.png') }}" class="legend-icon"> CT-NatGas-Industrial</div>';
+            div.innerHTML += '<div class="legend-item"><img src="{{ url_for('static', filename='DC-Intertie.png') }}" class="legend-icon"> DC-Intertie</div>';
+            div.innerHTML += '<div class="legend-item"><img src="{{ url_for('static', filename='DG-BTM.png') }}" class="legend-icon"> DG-BTM</div>';
+            div.innerHTML += '<div class="legend-item"><img src="{{ url_for('static', filename='Geo-BinaryCycle.png') }}" class="legend-icon"> Geo-BinaryCycle</div>';
+            div.innerHTML += '<div class="legend-item"><img src="{{ url_for('static', filename='Hydro.png') }}" class="legend-icon"> Hydro</div>';
+            div.innerHTML += '<div class="legend-item"><img src="{{ url_for('static', filename='HydroRPS.png') }}" class="legend-icon"> HydroRPS</div>';
+            div.innerHTML += '<div class="legend-item"><img src="{{ url_for('static', filename='ICE-NatGas.png') }}" class="legend-icon"> ICE-NatGas</div>';
+            div.innerHTML += '<div class="legend-item"><img src="{{ url_for('static', filename='SolarPV-NonTracking.png') }}" class="legend-icon"> SolarPV-NonTracking</div>';
+            div.innerHTML += '<div class="legend-item"><img src="{{ url_for('static', filename='SolarPV-Tracking.png') }}" class="legend-icon"> SolarPV-Tracking</div>';
+            div.innerHTML += '<div class="legend-item"><img src="{{ url_for('static', filename='ST-Coal.png') }}" class="legend-icon"> ST-Coal</div>';
+            div.innerHTML += '<div class="legend-item"><img src="{{ url_for('static', filename='ST-NatGas.png') }}" class="legend-icon"> ST-NatGas</div>';
+            div.innerHTML += '<div class="legend-item"><img src="{{ url_for('static', filename='ST-Nuclear.png') }}" class="legend-icon"> ST-Nuclear</div>';
+            div.innerHTML += '<div class="legend-item"><img src="{{ url_for('static', filename='WT-Onshore.png') }}" class="legend-icon"> WT-Onshore</div>';
+            div.innerHTML += '<div class="legend-item"><img src="{{ url_for('static', filename='load.png') }}" class="legend-icon"> Load</div>';
+            div.innerHTML += '<div class="legend-item"><img src="{{ url_for('static', filename='bus.png') }}" class="legend-icon"> Bus</div>';
+            div.innerHTML += '<div class="legend-item"><img src="{{ url_for('static', filename='substation.png') }}" class="legend-icon"> Substation</div>';
+            div.innerHTML += '<div class="legend-item"><div class="legend-line" style="background-color: blue;"></div> Voltage < 100kV</div>';
+            div.innerHTML += '<div class="legend-item"><div class="legend-line" style="background-color: red;"></div> Voltage 100-161kV</div>';
+            div.innerHTML += '<div class="legend-item"><div class="legend-line" style="background-color: purple;"></div> Voltage 220-287kV</div>';
+            div.innerHTML += '<div class="legend-item"><div class="legend-line" style="background-color: orange;"></div> Voltage 345kV</div>';
+            div.innerHTML += '<div class="legend-item"><div class="legend-line" style="background-color: yellow;"></div> Voltage 500kV</div>';
+            div.innerHTML += '<div class="legend-item"><div class="legend-line" style="background-color: pink;"></div> Voltage >= 735kV</div>';
+
+            // Add description at the end
+            div.innerHTML += '<div class="legend-description">Solid lines: existing lines.<br>Dotted lines: candidate lines.</div>';
+            return div;
+        };
+
+        // Add the legend to the map
+        legend.addTo(map);
+
+        function calculateDays(startDate, endDate) {
+            var start = new Date(startDate);
+            var end = new Date(endDate);
+            var timeDiff = Math.abs(end - start);
+            return Math.ceil(timeDiff / (1000 * 3600 * 24)) + 1; // Including both start and end date
+        }
+
+        // Create and add the color bar as a Leaflet control
+        var colorBarControl = L.control({position: 'bottomright'});
+
+        var defaultColorBarHtml = '<div class="legend-container">' +
+            '<div class="legend-bar"></div>' +
+            '<div class="legend-labels">' +
+            '<span>-30</span><span class="legend-title">Temperature (°C)</span><span>50</span>' +
+            '</div>' +
+            '</div>';
+
+        var defaultColorBarHtml2 = '<div class="legend-container">' +
+            '<div class="legend-bar"></div>' +
+            '<div class="legend-labels">' +
+            '<span>-15</span><span class="legend-title">Temperature (°C)</span><span>+15</span>' +
+            '</div>' +
+            '</div>';
+
+        function updateColorBar(heatmapType) {
+            // Remove the old color bar control
+            if (colorBarControl) {
+                colorBarControl.remove();
+            }
+        
+            colorBarControl = L.control({position: 'bottomright'});
+        
+            colorBarControl.onAdd = function (map) {
+                var div = L.DomUtil.create('div', 'legend-container');
+                if ([0, 1, 4, 5, 8, 9].includes(heatmapType)) {
+                    div.innerHTML = defaultColorBarHtml;
+                } else if ([2, 6, 10].includes(heatmapType)) {
+                    div.innerHTML = defaultColorBarHtml2;
+                } else if ([3, 7, 11].includes(heatmapType)) {
+                    var startDate = document.getElementById('start_date').value;
+                    var endDate = document.getElementById('end_date').value;
+                    var days = calculateDays(startDate, endDate);
+        
+                    div.innerHTML = `
+                        <div class="legend-container">
+                            <div class="legend-bar" style="background: linear-gradient(to right, #ffffe5, #f7f7f7, #fee08b, #fdae61, #d73027); height: 20px;">
+                            </div>
+                            <div class="legend-labels">
+                                <span>0</span><span class="legend-title">Days #</span><span>${days}</span>
+                            </div>
+                        </div>
+                    `;
+                }
+                return div;
+            };
+        
+            colorBarControl.addTo(map);
+        }
+            
+    
+        // Example function to handle heatmap type change
+        document.getElementById('heatmap-type').addEventListener('change', function() {
+            var selectedType = parseInt(this.value, 10);
+            updateColorBar(selectedType);
+        });
+        
+    
+        // Initial color bar setup based on default or current type
+        updateColorBar(parseInt(document.getElementById('heatmap-type').value, 0));
+
+
+                
+     </script>
+ </body>
+ </html>

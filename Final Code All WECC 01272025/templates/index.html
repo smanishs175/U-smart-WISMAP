@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Map Viewer</title>
+    <link rel="icon" href="/static/images/icon.ico" type="image/ico"> <!-- Favicon -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            position: relative;
+            background-color: #f8f9fa;
+        }
+        header {
+            position: relative;
+            height: 120px; /* Adjust based on logo size */
+            background-color: #f8f9fa;
+            padding: 20px;
+        }
+        img.logo {
+            position: absolute;
+            top: 10px; /* Adjust as needed */
+            left: 10px; /* Adjust as needed */
+            width: 400px; /* Set desired width */
+            height: auto; /* Maintain aspect ratio */
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin: 0;
+        }
+        main {
+            text-align: center;
+            padding: 20px;
+        }
+        .description {
+            font-size: 16px; /* Set desired font size */
+            font-family: 'Arial', sans-serif; /* Set desired font family */
+            text-align: justify; /* Justify the text */
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6; /* Set line height for readability */
+        }
+        a {
+            text-decoration: none;
+            color: #007bff;
+            font-size: 18px;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        img.description-image {
+            display: block;
+            margin: 20px auto;
+            max-width: 100%;
+            width: 1000px; /* Set desired width */
+            height: auto; /* Maintain aspect ratio */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="/static/images/logo.png" alt="Toolbox Logo" class="logo">
+    </header>
+    <main>
+        <h1>AI-GAPSIM: A New AI-Based Physical Atmosphere Model<br>for Power System Weather Resiliency</h1>
+        <p class="description">
+            The Artificial Intelligence Geospatial Atmosphere Power System Interaction Model (AI-GAPSIM) consists of three interconnected modules that together form a comprehensive toolbox for assessing the impact of climate change on power systems. It begins with the analysis of extensive historical weather data to predict stochastic parameters such as temperature, humidity, wind speed, and precipitation, using advanced AI algorithms to ensure high accuracy and reliability. These predicted parameters are then input into a sophisticated physics-based land-atmosphere model, which generates detailed weather phenomena. This interpretable model enables the visualization and assessment of the impact of each weather phenomenon on various power system components. By integrating these components, GAPSIM allows users to understand and evaluate the effects of climate change on power systems, providing critical insights for improving resilience and planning for future climatic conditions.
+        </p>
+        <img src="/static/images/OverallStructure.png" alt="Description Image" class="description-image">
+        <p><a href="/map">View the Map</a></p>
+    </main>
+</body>
+</html>

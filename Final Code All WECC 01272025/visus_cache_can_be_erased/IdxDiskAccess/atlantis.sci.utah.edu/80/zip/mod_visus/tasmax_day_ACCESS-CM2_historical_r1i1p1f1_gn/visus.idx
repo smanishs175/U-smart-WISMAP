@@ -1,0 +1,22 @@
+(version)
+6
+(box)
+0 1439 0 599
+(fields)
+tasmax float32 default_compression(zip) default_layout() default_value(0) min(0) max(0) 
+(bits)
+V010101010101010101010
+(bitsperblock)
+16
+(blocksperfile)
+32
+(interleave block)
+0
+(time)
+711750 735475 time_%04d/
+(filename_template)
+./visus/%04x.bin
+(missing_blocks)
+0
+(arco)
+0

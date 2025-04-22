@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Data Plot</title>
+    <!-- Include Plotly.js -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+    <h1>Weather Data Plot</h1>
+    <div id="plot-container">
+        {{ plot_html|safe }}
+    </div>
+    <h2>Summary Table</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Parameter</th>
+                <th>Min Value</th>
+                <th>Min Date</th>
+                <th>Max Value</th>
+                <th>Max Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for param, min_val in min_values.items() %}
+                <tr>
+                    <td>{{ param }}</td>
+                    <td>{{ min_val[0]|float|round(2) if min_val[0] != 'N/A' else 'N/A' }}</td>
+                    <td>{{ min_val[1].strftime('%Y-%m-%d') if min_val[1] != 'N/A' else 'N/A' }}</td>
+                    <td>{{ max_values[param][0]|float|round(2) if max_values[param][0] != 'N/A' else 'N/A' }}</td>
+                    <td>{{ max_values[param][1].strftime('%Y-%m-%d') if max_values[param][1] != 'N/A' else 'N/A' }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

@@ -1,0 +1,557 @@
+owner data  [  556]    owner name           s name       net_mw   net_mvar     sch_mw   sch_mvar  ar M
+       1 "No owner defined                " "Non " :      0.000      0.000      0.000      0.000   0 0 
+       2 "Arizona Public Service          " "APS " :      0.000      0.000      0.000      0.000   0 0 
+       3 "Arizona Electric Power Co-Op    " "AEPC" :      0.000      0.000      0.000      0.000   0 0 
+       4 "WAPA-DSW                        " "WALC" :      0.000      0.000      0.000      0.000   0 0 
+       5 "EMA                             " "EMA " :      0.000      0.000      0.000      0.000   0 0 
+       6 "LCA                             " "LCA " :      0.000      0.000      0.000      0.000   0 0 
+       7 "PacifiCorp - East               " "PAC " :      0.000      0.000      0.000      0.000   0 0 
+       8 "UAMPS                           " "UAMP" :      0.000      0.000      0.000      0.000   0 0 
+       9 "UMPA                            " "UMPA" :      0.000      0.000      0.000      0.000   0 0 
+      10 "British Columbia Hydro Auth.    " "BCH " :      0.000      0.000      0.000      0.000   0 0 
+      11 "Idaho Power Company             " "IPC " :      0.000      0.000      0.000      0.000   0 0 
+      12 "R1                              " "R1  " :      0.000      0.000      0.000      0.000   0 0 
+      13 "PacifiCorp - West               " "PPL " :      0.000      0.000      0.000      0.000   0 0 
+      14 "Bonneville Power Admin          " "BPA " :      0.000      0.000      0.000      0.000   0 0 
+      15 "Seattle City Light              " "SCL " :      0.000      0.000      0.000      0.000   0 0 
+      16 "Imperial Irrigation District    " "IID " :      0.000      0.000      0.000      0.000   0 0 
+      17 "N2  Nevada                      " "N2  " :      0.000      0.000      0.000      0.000   0 0 
+      18 "N3  Nevada                      " "N3  " :      0.000      0.000      0.000      0.000   0 0 
+      19 "N8  Nevada                      " "N8  " :      0.000      0.000      0.000      0.000   0 0 
+      20 "N4  Nevada                      " "N4  " :      0.000      0.000      0.000      0.000   0 0 
+      21 "N6  Nevada                      " "N6  " :      0.000      0.000      0.000      0.000   0 0 
+      22 "N5  Nevada                      " "N5  " :      0.000      0.000      0.000      0.000   0 0 
+      23 "N9  Nevada                      " "N9  " :      0.000      0.000      0.000      0.000   0 0 
+      24 "N1  Nevada                      " "N1  " :      0.000      0.000      0.000      0.000   0 0 
+      25 "Valley Electric Association     " "VEA " :      0.000      0.000      0.000      0.000   0 0 
+      26 "WAPA L.M.                       " "WALM" :      0.000      0.000      0.000      0.000   0 0 
+      27 "WAPA U.C.                       " "WAUC" :      0.000      0.000      0.000      0.000   0 0 
+      28 "Northern Wasco PUD              " "NWA " :      0.000      0.000      0.000      0.000   0 0 
+      29 "Avista Corp.                    " "AVA " :      0.000      0.000      0.000      0.000   0 0 
+      30 "Puget Sound Energy              " "PSE " :      0.000      0.000      0.000      0.000   0 0 
+      31 "US DOE - Richland               " "DOE " :      0.000      0.000      0.000      0.000   0 0 
+      32 "Portland General Elec           " "PG  " :      0.000      0.000      0.000      0.000   0 0 
+      33 "Eugene Water & Elec Bd          " "EWE " :      0.000      0.000      0.000      0.000   0 0 
+      34 "Snohomish PUD                   " "SPD " :      0.000      0.000      0.000      0.000   0 0 
+      35 "Grant PUD                       " "GPD " :      0.000      0.000      0.000      0.000   0 0 
+      36 "Chelan PUD                      " "CPD " :      0.000      0.000      0.000      0.000   0 0 
+      37 "Inland Power & Light            " "INL " :      0.000      0.000      0.000      0.000   0 0 
+      38 "Tacoma Power                    " "TPWR" :      0.000      0.000      0.000      0.000   0 0 
+      39 "Energy Northwest                " "EN  " :      0.000      0.000      0.000      0.000   0 0 
+      40 "USN Bremerton                   " "USNB" :      0.000      0.000      0.000      0.000   0 0 
+      41 "Central Lincoln PUD             " "CLP " :      0.000      0.000      0.000      0.000   0 0 
+      42 "Clallam PUD                     " "CLA " :      0.000      0.000      0.000      0.000   0 0 
+      43 "US Army Corps of Engrs          " "COE " :      0.000      0.000      0.000      0.000   0 0 
+      44 "Pend Oreille PUD                " "PDO " :      0.000      0.000      0.000      0.000   0 0 
+      45 "Whatcom PUD                     " "WPD " :      0.000      0.000      0.000      0.000   0 0 
+      46 "Douglas PUD                     " "DPD " :      0.000      0.000      0.000      0.000   0 0 
+      47 "Cowlitz PUD                     " "CCP " :      0.000      0.000      0.000      0.000   0 0 
+      48 "Grays Harbor PUD                " "GH  " :      0.000      0.000      0.000      0.000   0 0 
+      49 "Clark PUD                       " "CLK " :      0.000      0.000      0.000      0.000   0 0 
+      50 "US Bur Reclam                   " "USBU" :      0.000      0.000      0.000      0.000   0 0 
+      51 "Emerald PUD                     " "EMP " :      0.000      0.000      0.000      0.000   0 0 
+      52 "Big Bend Elec Co-Op             " "BBE " :      0.000      0.000      0.000      0.000   0 0 
+      53 "Kootenai Elec Co-Op             " "KEC " :      0.000      0.000      0.000      0.000   0 0 
+      54 "Lewis PUD                       " "LEW " :      0.000      0.000      0.000      0.000   0 0 
+      55 "Coos-Curry Elec Co-Op           " "CCC " :      0.000      0.000      0.000      0.000   0 0 
+      56 "Springfield Util Bd             " "SUB " :      0.000      0.000      0.000      0.000   0 0 
+      57 "Harney Elec Co-Op               " "HAR " :      0.000      0.000      0.000      0.000   0 0 
+      58 "SDS Lumber Co.                  " "SDS " :      0.000      0.000      0.000      0.000   0 0 
+      59 "Sierra Pacific Power Co.        " "SPP " :      0.000      0.000      0.000      0.000   0 0 
+      60 "Black Hills                     " "BHPL" :      0.000      0.000      0.000      0.000   0 0 
+      61 "Jefferson County PUD            " "JCPD" :      0.000      0.000      0.000      0.000   0 0 
+      64 "Sierra Pacific Power Co.        " "NVEN" :      0.000      0.000      0.000      0.000   0 0 
+      65 "PSColorado                      " "PSC " :      0.000      0.000      0.000      0.000   0 0 
+      66 "West Plains G&T                 " "WP  " :      0.000      0.000      0.000      0.000   0 0 
+      67 "ATL                             " "ATL " :      0.000      0.000      0.000      0.000   0 0 
+      68 "IM                              " "IM  " :      0.000      0.000      0.000      0.000   0 0 
+      69 "PPL-Global                      " "PPLG" :      0.000      0.000      0.000      0.000   0 0 
+      70 "R7                              " "R7  " :      0.000      0.000      0.000      0.000   0 0 
+      71 "TS                              " "TS  " :      0.000      0.000      0.000      0.000   0 0 
+      72 "NMPP                            " "NMPP" :      0.000      0.000      0.000      0.000   0 0 
+      73 "Tri-State G&T                   " "TRI " :      0.000      0.000      0.000      0.000   0 0 
+      74 "Southern California Edison      " "SCE " :      0.000      0.000      0.000      0.000   0 0 
+      75 "Fortis BC                       " "FBC " :      0.000      0.000      0.000      0.000   0 0 
+      76 "Alberta Int. Electric System    " "AIES" :      0.000      0.000      0.000      0.000   0 0 
+      77 "WAPA UGP                        " "WAUM" :      0.000      0.000      0.000      0.000   0 0 
+      78 "NorthWestern Energy             " "NWMT" :      0.000      0.000      0.000      0.000   0 0 
+      79 "Tucson Electric Power           " "TEP " :      0.000      0.000      0.000      0.000   0 0 
+      80 "Salt River Project              " "SRP " :      0.000      0.000      0.000      0.000   0 0 
+      81 "City of Los Angeles             " "LAD " :      0.000      0.000      0.000      0.000   0 0 
+      82 "BPD                             " "BPD " :      0.000      0.000      0.000      0.000   0 0 
+      83 "OKP                             " "OKP " :      0.000      0.000      0.000      0.000   0 0 
+      84 "MEC                             " "MEC " :      0.000      0.000      0.000      0.000   0 0 
+      85 "City of Milton-Freewater        " "MFR " :      0.000      0.000      0.000      0.000   0 0 
+      86 "KLI                             " "KLI " :      0.000      0.000      0.000      0.000   0 0 
+      88 "CPU                             " "CPU " :      0.000      0.000      0.000      0.000   0 0 
+      89 "COR                             " "COR " :      0.000      0.000      0.000      0.000   0 0 
+      91 "WAPA - MP                       " "R2  " :      0.000      0.000      0.000      0.000   0 0 
+      93 "Platte River Power Auth.        " "PRP " :      0.000      0.000      0.000      0.000   0 0 
+      94 "Basin Electric Power Coop.      " "BASI" :      0.000      0.000      0.000      0.000   0 0 
+      95 "CSU                             " "CSU " :      0.000      0.000      0.000      0.000   0 0 
+      96 "NET                             " "NET " :      0.000      0.000      0.000      0.000   0 0 
+      97 "BKB                             " "BKB " :      0.000      0.000      0.000      0.000   0 0 
+      99 "BOR                             " "BOR " :      0.000      0.000      0.000      0.000   0 0 
+     100 "Clearwater Power Company        " "CPC " :      0.000      0.000      0.000      0.000   0 0 
+     101 "City of Chewelah                " "CHW " :      0.000      0.000      0.000      0.000   0 0 
+     102 "Fairchild Air Force Base        " "FAB " :      0.000      0.000      0.000      0.000   0 0 
+     103 "TCE                             " "TCE " :      0.000      0.000      0.000      0.000   0 0 
+     104 "Idaho County Power & Light      " "ICE " :      0.000      0.000      0.000      0.000   0 0 
+     105 "Lane Electric Co-op             " "LEC " :      0.000      0.000      0.000      0.000   0 0 
+     106 "Northern Lights Electric Co-op  " "NLI " :      0.000      0.000      0.000      0.000   0 0 
+     107 "Modern Electric                 " "MDR " :      0.000      0.000      0.000      0.000   0 0 
+     108 "City of Plummer                 " "PLM " :      0.000      0.000      0.000      0.000   0 0 
+     109 "R6                              " "R6  " :      0.000      0.000      0.000      0.000   0 0 
+     110 "Oregon Trail Electric Coop      " "OTEC" :      0.000      0.000      0.000      0.000   0 0 
+     111 "CFE - Mexico                    " "CFE " :      0.000      0.000      0.000      0.000   0 0 
+     112 "BUREAU OF INDIAN AFFAIRS        " "BIA " :      0.000      0.000      0.000      0.000   0 0 
+     113 "CUC   WALC                      " "CUC " :      0.000      0.000      0.000      0.000   0 0 
+     115 "Wyoming Municipal Power Agency  " "WMPA" :      0.000      0.000      0.000      0.000   0 0 
+     118 "City of Los Angeles-GS          " "LAGS" :      0.000      0.000      0.000      0.000   0 0 
+     119 "City of Glendale                " "GLND" :      0.000      0.000      0.000      0.000   0 0 
+     121 "BURBANK                         " "BURB" :      0.000      0.000      0.000      0.000   0 0 
+     122 "LA Contracts                    " "LCON" :      0.000      0.000      0.000      0.000   0 0 
+     123 "Intermountain Power Agency      " "IPA " :      0.000      0.000      0.000      0.000   0 0 
+     124 "IPP Wind                        " "IPPW" :      0.000      0.000      0.000      0.000   0 0 
+     125 "EPE   El Paso Electric Company  " "EPE " :      0.000      0.000      0.000      0.000   0 0 
+     126 "LAC   New Mexico                " "LAC " :      0.000      0.000      0.000      0.000   0 0 
+     127 "TSGT  New Mexico                " "TSGT" :      0.000      0.000      0.000      0.000   0 0 
+     129 "PN2   New Mexico                " "PN2 " :      0.000      0.000      0.000      0.000   0 0 
+     130 "PN1   New Mexico                " "PN1 " :      0.000      0.000      0.000      0.000   0 0 
+     131 "NTU   New Mexico                " "NTU " :      0.000      0.000      0.000      0.000   0 0 
+     132 "SPS   New Mexico                " "SPS " :      0.000      0.000      0.000      0.000   0 0 
+     133 "PN3   New Mexico                " "PN3 " :      0.000      0.000      0.000      0.000   0 0 
+     134 "Valencia Power, LLC             " "VEF " :      0.000      0.000      0.000      0.000   0 0 
+     135 "Metro. Water District S.Cal     " "MWD " :      0.000      0.000      0.000      0.000   0 0 
+     136 "SDG&E                           " "SDGE" :      0.000      0.000      0.000      0.000   0 0 
+     137 "Sempra US Gas and Power         " "SGN " :      0.000      0.000      0.000      0.000   0 0 
+     138 "Intergen                        " "ITG " :      0.000      0.000      0.000      0.000   0 0 
+     139 "Wellhead Electric Co.           " "WEC " :      0.000      0.000      0.000      0.000   0 0 
+     140 "NRG West/Cabrillo Power I       " "NRGW" :      0.000      0.000      0.000      0.000   0 0 
+     141 "LS Power                        " "LSP " :      0.000      0.000      0.000      0.000   0 0 
+     142 "Calpeak Power                   " "CPW " :      0.000      0.000      0.000      0.000   0 0 
+     143 "San Diego County Water Authority" "SDCW" :      0.000      0.000      0.000      0.000   0 0 
+     144 "Kumeyaay Wind, LLC              " "KUW " :      0.000      0.000      0.000      0.000   0 0 
+     145 "MMC Escondido, LLC              " "MMCE" :      0.000      0.000      0.000      0.000   0 0 
+     146 "MMC Chula Vista, LLC            " "MMCC" :      0.000      0.000      0.000      0.000   0 0 
+     147 "Calpine/Otay Mesa Gen Co.       " "CALP" :      0.000      0.000      0.000      0.000   0 0 
+     148 "Customer Owned QF-in SDG&E Area " "QFSD" :      0.000      0.000      0.000      0.000   0 0 
+     149 "Coral Power                     " "CRPW" :      0.000      0.000      0.000      0.000   0 0 
+     150 "Unisource Energy Services       " "UES " :      0.000      0.000      0.000      0.000   0 0 
+     155 "Orange Grove/J-Power            " "OGJP" :      0.000      0.000      0.000      0.000   0 0 
+     156 "Bull Moose Energy               " "MOOS" :      0.000      0.000      0.000      0.000   0 0 
+     157 "CalPeak Power El Cajon LLC      " "CPEC" :      0.000      0.000      0.000      0.000   0 0 
+     158 "CalPeak Power Enterprise LLC    " "CPES" :      0.000      0.000      0.000      0.000   0 0 
+     159 "Applied Energy LLC (N.Island)   " "AENI" :      0.000      0.000      0.000      0.000   0 0 
+     160 "Applied Energy LLC (NTC/MCRD)   " "AEMC" :      0.000      0.000      0.000      0.000   0 0 
+     161 "Applied Energy LLC (Naval St/Di)" "AEDI" :      0.000      0.000      0.000      0.000   0 0 
+     162 "NRG Cabrillo Power II (SDGT)    " "NRGT" :      0.000      0.000      0.000      0.000   0 0 
+     163 "Algonquin-Cambian Pacific Gen   " "ACPG" :      0.000      0.000      0.000      0.000   0 0 
+     164 "CP Kelco US, Inc.               " "CPKL" :      0.000      0.000      0.000      0.000   0 0 
+     165 "Escondido, City of              " "ESC " :      0.000      0.000      0.000      0.000   0 0 
+     166 "Southwest Generation Operating  " "GLIN" :      0.000      0.000      0.000      0.000   0 0 
+     167 "Landfill Generating Partners    " "LFGP" :      0.000      0.000      0.000      0.000   0 0 
+     168 "Fortistar                       " "FORT" :      0.000      0.000      0.000      0.000   0 0 
+     169 "San Diego State University      " "SDSU" :      0.000      0.000      0.000      0.000   0 0 
+     170 "Santa Fe Irrigation District    " "SFID" :      0.000      0.000      0.000      0.000   0 0 
+     171 "8minutenergy Renewables&AES Sola" "8MRS" :      0.000      0.000      0.000      0.000   0 0 
+     172 "Pattern Energy-Ocotillo Express " "PTRN" :      0.000      0.000      0.000      0.000   0 0 
+     173 "First Solar                     " "FS  " :      0.000      0.000      0.000      0.000   0 0 
+     174 "IV Solar/SES Solar Two Expansion" "SES " :      0.000      0.000      0.000      0.000   0 0 
+     175 "DG&T                            " "DG&T" :      0.000      0.000      0.000      0.000   0 0 
+     180 "Las Vegas Gogeneration LP       " "LVC " :      0.000      0.000      0.000      0.000   0 0 
+     182 "Las Vegas Power Company         " "LVPC" :      0.000      0.000      0.000      0.000   0 0 
+     183 "Nevada Cogeneration Associates#1" "NCA " :      0.000      0.000      0.000      0.000   0 0 
+     184 "Nevada Sun-Peak,LP              " "SPK " :      0.000      0.000      0.000      0.000   0 0 
+     185 "El Dorado Energy LLC            " "EDE " :      0.000      0.000      0.000      0.000   0 0 
+     186 "Ormat Nevada INC.               " "ORNI" :      0.000      0.000      0.000      0.000   0 0 
+     187 "Sierra Pacific Industries       " "SPI " :      0.000      0.000      0.000      0.000   0 0 
+     188 "Vulcan/BN GeoThermal Power Co.  " "VUL " :      0.000      0.000      0.000      0.000   0 0 
+     189 "Steamboat Development Corp.     " "STM " :      0.000      0.000      0.000      0.000   0 0 
+     200 "Tenaska Solar Ventures LLC      " "TSV " :      0.000      0.000      0.000      0.000   0 0 
+     201 "BCH Rio Tinto Alcan             " "RTA " :      0.000      0.000      0.000      0.000   0 0 
+     202 "BCH Independent Power Producers " "BIPP" :      0.000      0.000      0.000      0.000   0 0 
+     203 "BCH Industrial Load/Gen Customer" "BLGC" :      0.000      0.000      0.000      0.000   0 0 
+     204 "BCH Transmission Voltage Cust.  " "BTVC" :      0.000      0.000      0.000      0.000   0 0 
+     205 "Wistaria Ranch Solar LLC        " "WRS " :      0.000      0.000      0.000      0.000   0 0 
+     206 "Carlsbad Energy Center, LLC     " "CECL" :      0.000      0.000      0.000      0.000   0 0 
+     207 "Tule Wind                       " "TW  " :      0.000      0.000      0.000      0.000   0 0 
+     208 "Acorn Greenworks                " "AGW " :      0.000      0.000      0.000      0.000   0 0 
+     209 "AES North America Development   " "AESN" :      0.000      0.000      0.000      0.000   0 0 
+     211 "IID Independent Power Producer  " "IPP " :      0.000      0.000      0.000      0.000   0 0 
+     230 "Horizon West Transmission (HWT) " "HWT " :      0.000      0.000      0.000      0.000   0 0 
+     233 "JANPA                           " "JPA " :      0.000      0.000      0.000      0.000   0 0 
+     250 "GridLiance West Transco         " "GWT " :      0.000      0.000      0.000      0.000   0 0 
+     251 "Non VEA or GLW owned - VEA Area " "NVEA" :      0.000      0.000      0.000      0.000   0 0 
+     270 "First Wind                      " "FWND" :      0.000      0.000      0.000      0.000   0 0 
+     291 "City of Spokane                 " "SPO " :      0.000      0.000      0.000      0.000   0 0 
+     293 "Potlatch Paper                  " "PLP " :      0.000      0.000      0.000      0.000   0 0 
+     294 "Plummer Forest Products         " "PFP " :      0.000      0.000      0.000      0.000   0 0 
+     295 "Hydro Technology Systems        " "HTS " :      0.000      0.000      0.000      0.000   0 0 
+     296 "Vaagen Brothers Lumber Inc      " "VBL " :      0.000      0.000      0.000      0.000   0 0 
+     312 "WAPA - SNR                      " "WASN" :      0.000      0.000      0.000      0.000   0 0 
+     313 "City of Redding                 " "RDG " :      0.000      0.000      0.000      0.000   0 0 
+     320 "Tenaska Washington Partners     " "TWP " :      0.000      0.000      0.000      0.000   0 0 
+     322 "March Point Cogeneration Co.    " "MPCC" :      0.000      0.000      0.000      0.000   0 0 
+     334 "Modesto Irrigation District     " "MID " :      0.000      0.000      0.000      0.000   0 0 
+     337 "Turlock Irrigation District     " "TID " :      0.000      0.000      0.000      0.000   0 0 
+     339 "Hatchet Ridge Wind, LLC         " "HRW " :      0.000      0.000      0.000      0.000   0 0 
+     360 "PG&E customer owned facilities  " "CUST" :      0.000      0.000      0.000      0.000   0 0 
+     361 "City of Roseville               " "ROS " :      0.000      0.000      0.000      0.000   0 0 
+     362 "Department of Water Resources   " "CDWR" :      0.000      0.000      0.000      0.000   0 0 
+     363 "Sacramento Utility District     " "SMUD" :      0.000      0.000      0.000      0.000   0 0 
+     364 "California-Oregon Trans. Project" "COTP" :      0.000      0.000      0.000      0.000   0 0 
+     365 "Vigilante Electric Coop         " "VECO" :      0.000      0.000      0.000      0.000   0 0 
+     390 "Pacific Gas and Electric        " "PG&E" :      0.000      0.000      0.000      0.000   0 0 
+     392 "Northern California Power Agency" "NCPA" :      0.000      0.000      0.000      0.000   0 0 
+     394 "Silicon Valley Power            " "SVP " :      0.000      0.000      0.000      0.000   0 0 
+     401 "Benton County PUD               " "BPD " :      0.000      0.000      0.000      0.000   0 0 
+     402 "Benton Rural Electric Assn      " "BRE " :      0.000      0.000      0.000      0.000   0 0 
+     403 "Clatskanie PUD                  " "CLT " :      0.000      0.000      0.000      0.000   0 0 
+     404 "City of Richland                " "CTRL" :      0.000      0.000      0.000      0.000   0 0 
+     405 "Consumers Power Inc             " "CPI " :      0.000      0.000      0.000      0.000   0 0 
+     406 "California Pacific Utilities    " "CPUC" :      0.000      0.000      0.000      0.000   0 0 
+     407 "Columbia River PUD              " "CRP " :      0.000      0.000      0.000      0.000   0 0 
+     408 "Douglas Electric Co-op          " "DEC " :      0.000      0.000      0.000      0.000   0 0 
+     409 "Elmhurst Mutual Electric        " "ELM " :      0.000      0.000      0.000      0.000   0 0 
+     410 "Fall River Rural Electric Co-op " "FRC " :      0.000      0.000      0.000      0.000   0 0 
+     411 "Franklin County PUD             " "FRK " :      0.000      0.000      0.000      0.000   0 0 
+     412 "Klickitat County PUD            " "KLI " :      0.000      0.000      0.000      0.000   0 0 
+     413 "Lost River Electric Co-op       " "LRE " :      0.000      0.000      0.000      0.000   0 0 
+     414 "Lakeview Light & Power          " "LKV " :      0.000      0.000      0.000      0.000   0 0 
+     415 "Lower Valley Power & Light      " "LVP " :      0.000      0.000      0.000      0.000   0 0 
+     416 "City of McMinnville             " "MCM " :      0.000      0.000      0.000      0.000   0 0 
+     417 "Midstate Electric Co-op         " "MECP" :      0.000      0.000      0.000      0.000   0 0 
+     418 "Mason County PUD #3             " "MN3 " :      0.000      0.000      0.000      0.000   0 0 
+     419 "Okanogan County PUD             " "OKPD" :      0.000      0.000      0.000      0.000   0 0 
+     420 "Orcas Power & Light Company     " "OPL " :      0.000      0.000      0.000      0.000   0 0 
+     421 "Raft River Rural Electric Co-op " "RFT " :      0.000      0.000      0.000      0.000   0 0 
+     422 "Salmon River Electric           " "SRE " :      0.000      0.000      0.000      0.000   0 0 
+     423 "Tillamook PUD                   " "TIL " :      0.000      0.000      0.000      0.000   0 0 
+     424 "Umatilla Co-op                  " "UMT " :      0.000      0.000      0.000      0.000   0 0 
+     425 "Wells Rural Electric Co-op      " "WRE " :      0.000      0.000      0.000      0.000   0 0 
+     426 "Hermiston Generating Company, LP" "HEGC" :      0.000      0.000      0.000      0.000   0 0 
+     427 "Cosmo Speciality Fiber          " "CMSF" :      0.000      0.000      0.000      0.000   0 0 
+     428 "Georgia Pacific                 " "GPAC" :      0.000      0.000      0.000      0.000   0 0 
+     429 "PG&E National Energy Group      " "PGEN" :      0.000      0.000      0.000      0.000   0 0 
+     435 "Mason County PUD #1             " "MN1 " :      0.000      0.000      0.000      0.000   0 0 
+     437 "Dynegy Inc.                     " "DYN " :      0.000      0.000      0.000      0.000   0 0 
+     438 "Pacific PUD                     " "PACP" :      0.000      0.000      0.000      0.000   0 0 
+     439 "City of Port Angeles            " "PAN " :      0.000      0.000      0.000      0.000   0 0 
+     440 "Peninsula Light Co              " "PEN " :      0.000      0.000      0.000      0.000   0 0 
+     441 "Salem Electric Co-op            " "SEC " :      0.000      0.000      0.000      0.000   0 0 
+     442 "Pacificorp - Utah               " "UPL " :      0.000      0.000      0.000      0.000   0 0 
+     443 "Vera Water and Power            " "VWAP" :      0.000      0.000      0.000      0.000   0 0 
+     444 "Blachley-Lane Co-op             " "BLC " :      0.000      0.000      0.000      0.000   0 0 
+     445 "Central Electric Co-op          " "CNE " :      0.000      0.000      0.000      0.000   0 0 
+     446 "Flathead Elec. Co-op            " "FLT " :      0.000      0.000      0.000      0.000   0 0 
+     447 "City of Forest Grove            " "FOR " :      0.000      0.000      0.000      0.000   0 0 
+     448 "Rathdrum Power, LLC             " "RAT " :      0.000      0.000      0.000      0.000   0 0 
+     449 "Centralia City Light            " "CCN " :      0.000      0.000      0.000      0.000   0 0 
+     450 "Mission Valley Power            " "MSV " :      0.000      0.000      0.000      0.000   0 0 
+     451 "NextEra Energy                  " "FPLE" :      0.000      0.000      0.000      0.000   0 0 
+     452 "Calpine Corporation             " "CCO " :      0.000      0.000      0.000      0.000   0 0 
+     453 "FPL Energy Vansycle L.L.C.      " "FPEV" :      0.000      0.000      0.000      0.000   0 0 
+     454 "Wasco Electric Co-op            " "WASC" :      0.000      0.000      0.000      0.000   0 0 
+     455 "Columbia R.E.A.                 " "CREA" :      0.000      0.000      0.000      0.000   0 0 
+     456 "Surprise Valley Elec Co-op      " "SUVL" :      0.000      0.000      0.000      0.000   0 0 
+     457 "Coyote Springs 2, LLC           " "COYO" :      0.000      0.000      0.000      0.000   0 0 
+     458 "Frederickson Power, LLP         " "FRED" :      0.000      0.000      0.000      0.000   0 0 
+     460 "TransAlta-Centralia Gen, LLC    " "TACG" :      0.000      0.000      0.000      0.000   0 0 
+     462 "West Coast Energy               " "WCST" :      0.000      0.000      0.000      0.000   0 0 
+     463 "Tractabel                       " "TRCB" :      0.000      0.000      0.000      0.000   0 0 
+     464 "Goldendale Energy, Inc.         " "GOLD" :      0.000      0.000      0.000      0.000   0 0 
+     465 "Duke Energy, Inc.               " "DUKE" :      0.000      0.000      0.000      0.000   0 0 
+     466 "Enron Energy, Inc.              " "ENR " :      0.000      0.000      0.000      0.000   0 0 
+     467 "Northwest Power Ent.            " "NPE " :      0.000      0.000      0.000      0.000   0 0 
+     468 "GNA Energy                      " "GNA " :      0.000      0.000      0.000      0.000   0 0 
+     469 "Newport Northwest, LLC          " "NEWP" :      0.000      0.000      0.000      0.000   0 0 
+     470 "Calpine Corp.                   " "CALP" :      0.000      0.000      0.000      0.000   0 0 
+     471 "Mirant Corp.                    " "MIRA" :      0.000      0.000      0.000      0.000   0 0 
+     472 "Condon Wind Power, LLC          " "CWD " :      0.000      0.000      0.000      0.000   0 0 
+     475 "Oregon Energy Co.               " "OREE" :      0.000      0.000      0.000      0.000   0 0 
+     476 "Port of Morrow                  " "PMOR" :      0.000      0.000      0.000      0.000   0 0 
+     477 "Westward Energy                 " "WESW" :      0.000      0.000      0.000      0.000   0 0 
+     478 "Confederated Tribes of Umatilla " "UMTR" :      0.000      0.000      0.000      0.000   0 0 
+     480 "Plymouth Energy, LLC            " "PLY " :      0.000      0.000      0.000      0.000   0 0 
+     481 "BP West Coast Products LLC      " "BPWC" :      0.000      0.000      0.000      0.000   0 0 
+     483 "People's Energy Resource Corp   " "PERC" :      0.000      0.000      0.000      0.000   0 0 
+     484 "Blue Sky Wind, LLC              " "BSKY" :      0.000      0.000      0.000      0.000   0 0 
+     485 "Pacificorp Power Marketing      " "PPM " :      0.000      0.000      0.000      0.000   0 0 
+     487 "Cannon Power                    " "CANP" :      0.000      0.000      0.000      0.000   0 0 
+     488 "Wintricity                      " "WNTC" :      0.000      0.000      0.000      0.000   0 0 
+     490 "UPC Wind Partners LLC           " "UPC " :      0.000      0.000      0.000      0.000   0 0 
+     491 "Invenergy LLC                   " "INVN" :      0.000      0.000      0.000      0.000   0 0 
+     492 "Caithness                       " "CAI " :      0.000      0.000      0.000      0.000   0 0 
+     493 "Power Resources Cooperative     " "PRC " :      0.000      0.000      0.000      0.000   0 0 
+     494 "Transalta Energy Marketing      " "TEM " :      0.000      0.000      0.000      0.000   0 0 
+     496 "Bonners Ferry, City of          " "BFR " :      0.000      0.000      0.000      0.000   0 0 
+     497 "Middlefork Irrigation           " "MIR " :      0.000      0.000      0.000      0.000   0 0 
+     498 "National Park Service           " "NPS " :      0.000      0.000      0.000      0.000   0 0 
+     499 "Davenport Power LLC             " "DPL " :      0.000      0.000      0.000      0.000   0 0 
+     500 "K3 LLC                          " "K3W " :      0.000      0.000      0.000      0.000   0 0 
+     501 "PaTu Wind LLC                   " "PTWD" :      0.000      0.000      0.000      0.000   0 0 
+     502 "PS Power Generation             " "PSP " :      0.000      0.000      0.000      0.000   0 0 
+     503 "Delta Power Company, LLC        " "DPC " :      0.000      0.000      0.000      0.000   0 0 
+     510 "Horizon Wind Energy             " "HZWE" :      0.000      0.000      0.000      0.000   0 0 
+     601 "Boise-Kuna Irrigation District  " "BKID" :      0.000      0.000      0.000      0.000   0 0 
+     602 "City of Idaho Falls Electric Lig" "IFED" :      0.000      0.000      0.000      0.000   0 0 
+     603 "Telocaset Wind Power Partners   " "TWPP" :      0.000      0.000      0.000      0.000   0 0 
+     604 "Idaho Wind Partners             " "IWP " :      0.000      0.000      0.000      0.000   0 0 
+     605 "US Geothermal                   " "USG " :      0.000      0.000      0.000      0.000   0 0 
+     606 "EDP Renewables                  " "EDPR" :      0.000      0.000      0.000      0.000   0 0 
+     607 "TERNA Energy                    " "TERN" :      0.000      0.000      0.000      0.000   0 0 
+     608 "Exelon Wind                     " "EXW " :      0.000      0.000      0.000      0.000   0 0 
+     609 "Ridgeline Energy                " "RLE " :      0.000      0.000      0.000      0.000   0 0 
+     610 "Norco, Inc.                     " "NOR " :      0.000      0.000      0.000      0.000   0 0 
+     611 "Ash Grove Cement Co.            " "AGCC" :      0.000      0.000      0.000      0.000   0 0 
+     620 "Montana OTHR (Non-NWE owned)    " "MOTH" :      0.000      0.000      0.000      0.000   0 0 
+     621 "Montana COOP (Rural Elec Co-ops)" "MREC" :      0.000      0.000      0.000      0.000   0 0 
+     622 "Montana IPP (Ind. Power Prods)  " "MIPP" :      0.000      0.000      0.000      0.000   0 0 
+     625 "Glacier Elec (Montana)          " "MGEC" :      0.000      0.000      0.000      0.000   0 0 
+     631 "HILL COOP                       " "HLCP" :      0.000      0.000      0.000      0.000   0 0 
+     632 "BIGFLAT COOP                    " "BFCP" :      0.000      0.000      0.000      0.000   0 0 
+     633 "NORVAL COOP                     " "NVCP" :      0.000      0.000      0.000      0.000   0 0 
+     634 "MDU                             " "MDU " :      0.000      0.000      0.000      0.000   0 0 
+     639 "WAUW OTHER                      " "WAUW" :      0.000      0.000      0.000      0.000   0 0 
+     643 "Orion Energy                    " "ORE " :      0.000      0.000      0.000      0.000   0 0 
+     644 "American Renewable Energy       " "AREN" :      0.000      0.000      0.000      0.000   0 0 
+     646 "Eurus Energy America Corp       " "EEAC" :      0.000      0.000      0.000      0.000   0 0 
+     647 "WestRock CP, LLC                " "WRCP" :      0.000      0.000      0.000      0.000   0 0 
+     648 "Skamania County PUD             " "SKPD" :      0.000      0.000      0.000      0.000   0 0 
+     649 "Hood River Electric Co-op       " "HREC" :      0.000      0.000      0.000      0.000   0 0 
+     650 "ENXCO - Linden Wind Farm        " "ENX " :      0.000      0.000      0.000      0.000   0 0 
+     651 "John Deere Wind Energy          " "JDWE" :      0.000      0.000      0.000      0.000   0 0 
+     652 "Southern California Power Auth  " "SCPA" :      0.000      0.000      0.000      0.000   0 0 
+     653 "Biomass LLC                     " "BIO " :      0.000      0.000      0.000      0.000   0 0 
+     654 "Grand Coulee Hydroelectric Auth " "GCHA" :      0.000      0.000      0.000      0.000   0 0 
+     700 "Non Utility Owned - PSCO Area   " "NUOP" :      0.000      0.000      0.000      0.000   0 0 
+     730 "COL_San Luis Valley REA         " "SLVR" :      0.000      0.000      0.000      0.000   0 0 
+     731 "COL_San Isabel Electric Assn.   " "SIEA" :      0.000      0.000      0.000      0.000   0 0 
+     732 "COL_S.E. Colorado Power Assn.   " "SECP" :      0.000      0.000      0.000      0.000   0 0 
+     733 "COL_City of Lamar Util. Board   " "CLUB" :      0.000      0.000      0.000      0.000   0 0 
+     734 "COL_Lajunta Municipal Utility   " "LAJM" :      0.000      0.000      0.000      0.000   0 0 
+     735 "COL_Grand Valley Power          " "GVPL" :      0.000      0.000      0.000      0.000   0 0 
+     736 "COL_City of Glenwood Springs    " "CGWS" :      0.000      0.000      0.000      0.000   0 0 
+     737 "COL_Holy Cross Elect. Assn.     " "HCEA" :      0.000      0.000      0.000      0.000   0 0 
+     738 "COL_Intermountain REA           " "IREA" :      0.000      0.000      0.000      0.000   0 0 
+     739 "COL_Yampa Valley Elect. Assn.   " "YVEA" :      0.000      0.000      0.000      0.000   0 0 
+     740 "NON SCE Owned - SCE Area        " "NSCE" :      0.000      0.000      0.000      0.000   0 0 
+     741 "Aragonne Wind LLC               " "AW  " :      0.000      0.000      0.000      0.000   0 0 
+     742 "D.E. Shaw Renewables Investments" "DSRI" :      0.000      0.000      0.000      0.000   0 0 
+     773 "Colorado Highland Wind, LLC     " "CHWL" :      0.000      0.000      0.000      0.000   0 0 
+     800 "NON SRP Owned - SRP Area        " "NSRP" :      0.000      0.000      0.000      0.000   0 0 
+     801 "NON SRP Owned - other           " "2SRP" :      0.000      0.000      0.000      0.000   0 0 
+     826 "Naturener (Montana)             " "NAT " :      0.000      0.000      0.000      0.000   0 0 
+     838 "Fairfield (Montana)             " "FAIR" :      0.000      0.000      0.000      0.000   0 0 
+     850 "Enbridge                        " "ENBR" :      0.000      0.000      0.000      0.000   0 0 
+     857 "State of Montana                " "MT  " :      0.000      0.000      0.000      0.000   0 0 
+     900 "ACE Cogeneration Co.            " "ACE " :      0.000      0.000      0.000      0.000   0 0 
+     901 "NextLight                       " "NxLt" :      0.000      0.000      0.000      0.000   0 0 
+     902 "Arlington Wind Power Project    " "AWPP" :      0.000      0.000      0.000      0.000   0 0 
+     903 "BIV Generation Company          " "BGC " :      0.000      0.000      0.000      0.000   0 0 
+     904 "Black Hills Wyoming             " "BHW " :      0.000      0.000      0.000      0.000   0 0 
+     905 "Black Hills Colorado            " "BHC " :      0.000      0.000      0.000      0.000   0 0 
+     906 "Burney Forest Products          " "BFP " :      0.000      0.000      0.000      0.000   0 0 
+     907 "Cedar Creek Wind Energy         " "CCWE" :      0.000      0.000      0.000      0.000   0 0 
+     908 "CER Generation II               " "CERG" :      0.000      0.000      0.000      0.000   0 0 
+     909 "City of Corona - DWP            " "CCDP" :      0.000      0.000      0.000      0.000   0 0 
+     910 "City of St George               " "CSTG" :      0.000      0.000      0.000      0.000   0 0 
+     913 "Coalinga Cogeneration Company   " "CCGC" :      0.000      0.000      0.000      0.000   0 0 
+     914 "Colorado Green holdings         " "CGH " :      0.000      0.000      0.000      0.000   0 0 
+     915 "Colorado Power Partners         " "CPP " :      0.000      0.000      0.000      0.000   0 0 
+     916 "Columbia Power Cooperative Assoc" "CPCP" :      0.000      0.000      0.000      0.000   0 0 
+     917 "Crockett Cogeneration           " "CCCP" :      0.000      0.000      0.000      0.000   0 0 
+     918 "DAI Oildale Inc                 " "DAIO" :      0.000      0.000      0.000      0.000   0 0 
+     919 "Del Ranch, LP                   " "DRLP" :      0.000      0.000      0.000      0.000   0 0 
+     920 "Desert Winds II Pwr Purch Trst  " "DWPP" :      0.000      0.000      0.000      0.000   0 0 
+     921 "Elk Hills Power, LLC            " "EHP " :      0.000      0.000      0.000      0.000   0 0 
+     922 "Elmore, LP                      " "ELP " :      0.000      0.000      0.000      0.000   0 0 
+     924 "Energy NW - Energy Business Ser " "ENEB" :      0.000      0.000      0.000      0.000   0 0 
+     925 "Farmington Electric Utility     " "FEUS" :      0.000      0.000      0.000      0.000   0 0 
+     926 "Frederickson Power LP           " "FPLP" :      0.000      0.000      0.000      0.000   0 0 
+     927 "Front Range Power Co. LLC       " "FRPC" :      0.000      0.000      0.000      0.000   0 0 
+     928 "Gila River Power, LP            " "GILA" :      0.000      0.000      0.000      0.000   0 0 
+     929 "Columbia Basin Hydro            " "CBH " :      0.000      0.000      0.000      0.000   0 0 
+     930 "GWF Energy LLC                  " "GWFE" :      0.000      0.000      0.000      0.000   0 0 
+     931 "GWF Power System, LP            " "GWFP" :      0.000      0.000      0.000      0.000   0 0 
+     932 "Hanford LP                      " "HLP " :      0.000      0.000      0.000      0.000   0 0 
+     933 "Happy Jack Windpower, LLC       " "HJW " :      0.000      0.000      0.000      0.000   0 0 
+     934 "Heber Geothermal Company        " "HGC " :      0.000      0.000      0.000      0.000   0 0 
+     935 "City and County of San Francisco" "CCSF" :      0.000      0.000      0.000      0.000   0 0 
+     936 "HL Power Company                " "HLPC" :      0.000      0.000      0.000      0.000   0 0 
+     937 "Avangrid Renewables LLC Iberdrol" "IREW" :      0.000      0.000      0.000      0.000   0 0 
+     938 "KES - Kingsburg, LP             " "KESK" :      0.000      0.000      0.000      0.000   0 0 
+     939 "Kings River Conservation Distric" "KRCD" :      0.000      0.000      0.000      0.000   0 0 
+     940 "La Paloma Generating Company    " "LPGC" :      0.000      0.000      0.000      0.000   0 0 
+     941 "Leathers, LP                    " "LEAT" :      0.000      0.000      0.000      0.000   0 0 
+     942 "Madera Power, LLC               " "MPLC" :      0.000      0.000      0.000      0.000   0 0 
+     943 "Malacha hydro Limited Partner   " "MHLP" :      0.000      0.000      0.000      0.000   0 0 
+     944 "Manchief Power Company          " "MANP" :      0.000      0.000      0.000      0.000   0 0 
+     945 "Merced Irrigation District      " "MERC" :      0.000      0.000      0.000      0.000   0 0 
+     946 "Mesquite Power LLC              " "MQPL" :      0.000      0.000      0.000      0.000   0 0 
+     947 "Midset Cogeneration Company     " "MICC" :      0.000      0.000      0.000      0.000   0 0 
+     948 "Midway Sunset Cogeneration Co.  " "MSCC" :      0.000      0.000      0.000      0.000   0 0 
+     949 "Mirant Delta, LLC               " "MIRD" :      0.000      0.000      0.000      0.000   0 0 
+     951 "Mt. Poso Gogeneration Co.       " "POSO" :      0.000      0.000      0.000      0.000   0 0 
+     952 "New Harquahala Generating Co.   " "NHGC" :      0.000      0.000      0.000      0.000   0 0 
+     953 "Newmont Nevada Energy Investmetn" "NNEI" :      0.000      0.000      0.000      0.000   0 0 
+     954 "North American Power Group, LTD " "NAPG" :      0.000      0.000      0.000      0.000   0 0 
+     955 "OrHeber 2, Inc.                 " "ORHE" :      0.000      0.000      0.000      0.000   0 0 
+     956 "Pacific - Ultrapower Chinese    " "PUCS" :      0.000      0.000      0.000      0.000   0 0 
+     957 "Pend Oreille County PUD#1       " "POPD" :      0.000      0.000      0.000      0.000   0 0 
+     958 "Plains End II, LLC              " "PLE2" :      0.000      0.000      0.000      0.000   0 0 
+     959 "Plains End, LLC                 " "PLE " :      0.000      0.000      0.000      0.000   0 0 
+     960 "Rio Bravo Fresno                " "RBF " :      0.000      0.000      0.000      0.000   0 0 
+     961 "Rio Bravo Jasmin                " "RBJ " :      0.000      0.000      0.000      0.000   0 0 
+     962 "Rio Bravo Poso                  " "RBP " :      0.000      0.000      0.000      0.000   0 0 
+     963 "Rio Bravo Rocklin               " "RBR " :      0.000      0.000      0.000      0.000   0 0 
+     964 "Ripon Gogeneration LLC          " "RIPC" :      0.000      0.000      0.000      0.000   0 0 
+     965 "Saguaro Power Company           " "SAPC" :      0.000      0.000      0.000      0.000   0 0 
+     966 "Salinas River Cogeneration Co.  " "SRCC" :      0.000      0.000      0.000      0.000   0 0 
+     967 "Salton Sea Power Generation, LP " "SSPG" :      0.000      0.000      0.000      0.000   0 0 
+     968 "Salton Sea Power, LLC           " "SSP " :      0.000      0.000      0.000      0.000   0 0 
+     969 "San Joaquin Cogen, LLC          " "SJC " :      0.000      0.000      0.000      0.000   0 0 
+     970 "Sargent Canyon Cogeneration Co. " "SCCC" :      0.000      0.000      0.000      0.000   0 0 
+     971 "Second Imperial Geothermal Co.  " "SIGC" :      0.000      0.000      0.000      0.000   0 0 
+     972 "Shiloh Wind Project 2           " "SHIW" :      0.000      0.000      0.000      0.000   0 0 
+     973 "Spindle Hill Energy LLC         " "SHE " :      0.000      0.000      0.000      0.000   0 0 
+     974 "Sunnyside Cogeneration Associate" "SCA " :      0.000      0.000      0.000      0.000   0 0 
+     975 "Sunray Energy, Inc              " "SEI " :      0.000      0.000      0.000      0.000   0 0 
+     976 "Sunrise Power Company           " "SUN " :      0.000      0.000      0.000      0.000   0 0 
+     977 "Superna Energy LLC              " "SEL " :      0.000      0.000      0.000      0.000   0 0 
+     978 "SWG Colorado, LLC               " "SWGC" :      0.000      0.000      0.000      0.000   0 0 
+     979 "Termolectrica de Mexicali       " "TERM" :      0.000      0.000      0.000      0.000   0 0 
+     980 "Terra-Gen Dixie Valley, LLC     " "TGDV" :      0.000      0.000      0.000      0.000   0 0 
+     981 "Thermal Energy Development Part " "TEDP" :      0.000      0.000      0.000      0.000   0 0 
+     982 "Thermo Cogeneration Partnership " "TCP " :      0.000      0.000      0.000      0.000   0 0 
+     983 "Thermo Power and Electric, LLC  " "TPEL" :      0.000      0.000      0.000      0.000   0 0 
+     984 "Tri-Dam Project of Oakdale/SJID " "TDPO" :      0.000      0.000      0.000      0.000   0 0 
+     985 "Tuolumne Wind Project, LLC      " "TUWP" :      0.000      0.000      0.000      0.000   0 0 
+     986 "USACE-Omaha District            " "USO " :      0.000      0.000      0.000      0.000   0 0 
+     987 "USACE-Portland District         " "USP " :      0.000      0.000      0.000      0.000   0 0 
+     988 "USACE-Seattle District          " "USS " :      0.000      0.000      0.000      0.000   0 0 
+     989 "USACE-Walla Walla District      " "USW " :      0.000      0.000      0.000      0.000   0 0 
+     990 "Wheelabrator Lassen Inc.        " "WHEL" :      0.000      0.000      0.000      0.000   0 0 
+     991 "Wheelabrator Spokane Inc.       " "WHES" :      0.000      0.000      0.000      0.000   0 0 
+     992 "White Creek Wind I, LLC         " "WWW " :      0.000      0.000      0.000      0.000   0 0 
+     993 "Williams Flexible Generation    " "WFG " :      0.000      0.000      0.000      0.000   0 0 
+     994 "Woodland Biomass Ltd            " "WOB " :      0.000      0.000      0.000      0.000   0 0 
+     995 "Yuma Cogeneration Associates    " "YCA " :      0.000      0.000      0.000      0.000   0 0 
+     996 "CalPeak Power Panoche LLC       " "CPPA" :      0.000      0.000      0.000      0.000   0 0 
+     997 "CalPeak Power Vaca Dixon LLC    " "CPVD" :      0.000      0.000      0.000      0.000   0 0 
+     998 "2Morrow Energy, LLC             " "2MEG" :      0.000      0.000      0.000      0.000   0 0 
+    1001 "Clearway Energy Group LLC       " "CEG " :      0.000      0.000      0.000      0.000   0 0 
+    1010 "Pattern Energy Group, LP        " "PEGL" :      0.000      0.000      0.000      0.000   0 0 
+    1400 "Alcoa, Inc.                     " "ALCO" :      0.000      0.000      0.000      0.000   0 0 
+    1401 "Asotin PUD                      " "APUD" :      0.000      0.000      0.000      0.000   0 0 
+    1402 "Canby Utility Board             " "CUB " :      0.000      0.000      0.000      0.000   0 0 
+    1403 "City of Ashland                 " "COA " :      0.000      0.000      0.000      0.000   0 0 
+    1404 "City of Bandon                  " "COBD" :      0.000      0.000      0.000      0.000   0 0 
+    1405 "City of Blaine                  " "COBL" :      0.000      0.000      0.000      0.000   0 0 
+    1406 "City of Cascade Locks           " "COCL" :      0.000      0.000      0.000      0.000   0 0 
+    1407 "City of Cheney                  " "COCH" :      0.000      0.000      0.000      0.000   0 0 
+    1408 "City of Eatonville              " "COEV" :      0.000      0.000      0.000      0.000   0 0 
+    1409 "City of Ellensburg              " "COEL" :      0.000      0.000      0.000      0.000   0 0 
+    1410 "City of Hermiston               " "COHE" :      0.000      0.000      0.000      0.000   0 0 
+    1412 "City of McCleary                " "COMC" :      0.000      0.000      0.000      0.000   0 0 
+    1414 "City of Monmouth                " "COMO" :      0.000      0.000      0.000      0.000   0 0 
+    1415 "City of Sumas                   " "COS " :      0.000      0.000      0.000      0.000   0 0 
+    1416 "City of Troy                    " "COT " :      0.000      0.000      0.000      0.000   0 0 
+    1417 "Columbia Basin Co-op            " "CBCP" :      0.000      0.000      0.000      0.000   0 0 
+    1421 "Ferry County PUD 1              " "FPUD" :      0.000      0.000      0.000      0.000   0 0 
+    1422 "Burley Irrigation District      " "BUID" :      0.000      0.000      0.000      0.000   0 0 
+    1423 "Grays Harbor Energy LLC         " "GHE " :      0.000      0.000      0.000      0.000   0 0 
+    1424 "Navajo Transitional Energy Co   " "NTEC" :      0.000      0.000      0.000      0.000   0 0 
+    1425 "Harvest Wind LLC                " "HWLC" :      0.000      0.000      0.000      0.000   0 0 
+    1426 "Kaiser Aluminum                 " "KAL " :      0.000      0.000      0.000      0.000   0 0 
+    1427 "Kittitas PUD                    " "KTPD" :      0.000      0.000      0.000      0.000   0 0 
+    1430 "Nespelem Valley Electric        " "NVE " :      0.000      0.000      0.000      0.000   0 0 
+    1431 "Ohop                            " "OHOP" :      0.000      0.000      0.000      0.000   0 0 
+    1432 "Parkland Light and Water        " "PKLW" :      0.000      0.000      0.000      0.000   0 0 
+    1433 "Port of Seattle                 " "POS " :      0.000      0.000      0.000      0.000   0 0 
+    1434 "Port Townsend Paper             " "PTP " :      0.000      0.000      0.000      0.000   0 0 
+    1436 "Riverside Electric Co           " "RECO" :      0.000      0.000      0.000      0.000   0 0 
+    1438 "Tanner Electric                 " "TAEC" :      0.000      0.000      0.000      0.000   0 0 
+    1439 "Town of Coulee Dam              " "TCD " :      0.000      0.000      0.000      0.000   0 0 
+    1440 "Town of Steilacoom              " "TOSC" :      0.000      0.000      0.000      0.000   0 0 
+    1441 "TYR Energy                      " "TYRE" :      0.000      0.000      0.000      0.000   0 0 
+    1442 "Umpqua Indian Utility Co-op.    " "UIUC" :      0.000      0.000      0.000      0.000   0 0 
+    1443 "United Electric Co-op, Inc.     " "UECO" :      0.000      0.000      0.000      0.000   0 0 
+    1445 "Wahkiakum PUD                   " "WPUD" :      0.000      0.000      0.000      0.000   0 0 
+    1447 "West Oregon Electric            " "WOEC" :      0.000      0.000      0.000      0.000   0 0 
+    1448 "Weyerhaeuser NR Company         " "WNRC" :      0.000      0.000      0.000      0.000   0 0 
+    1450 "Yakama Power                    " "YKPW" :      0.000      0.000      0.000      0.000   0 0 
+    1451 "Lincoln Electric                " "LNCN" :      0.000      0.000      0.000      0.000   0 0 
+    1452 "Drain, City of                  " "DRAN" :      0.000      0.000      0.000      0.000   0 0 
+    1453 "US DOE Natl Lab Albany          " "ALBN" :      0.000      0.000      0.000      0.000   0 0 
+    1454 "Southern Columbia Basin Irrig   " "SCBI" :      0.000      0.000      0.000      0.000   0 0 
+    1455 "USN Bangor                      " "USBG" :      0.000      0.000      0.000      0.000   0 0 
+    1456 "USN Everett                     " "USNE" :      0.000      0.000      0.000      0.000   0 0 
+    1457 "Smith Creek Hydro LLC           " "SCHL" :      0.000      0.000      0.000      0.000   0 0 
+    1458 "Energy Northwest Packwood       " "ENWP" :      0.000      0.000      0.000      0.000   0 0 
+    1459 "City of Burley                  " "CTBR" :      0.000      0.000      0.000      0.000   0 0 
+    1460 "City of Albion                  " "CTAL" :      0.000      0.000      0.000      0.000   0 0 
+    1461 "City of Declo                   " "CTDE" :      0.000      0.000      0.000      0.000   0 0 
+    1462 "South Side Electric             " "SSEC" :      0.000      0.000      0.000      0.000   0 0 
+    1463 "East End Mutual                 " "EEMT" :      0.000      0.000      0.000      0.000   0 0 
+    1464 "Farmers Electric                " "FMEC" :      0.000      0.000      0.000      0.000   0 0 
+    1465 "City of Heyburn                 " "CTHB" :      0.000      0.000      0.000      0.000   0 0 
+    1466 "City of Minidoka                " "CTMK" :      0.000      0.000      0.000      0.000   0 0 
+    1467 "City of Rupert                  " "CTRP" :      0.000      0.000      0.000      0.000   0 0 
+    1468 "Ravalli County Electric Co-op   " "RCEC" :      0.000      0.000      0.000      0.000   0 0 
+    1469 "Lost River PUD                  " "LPUD" :      0.000      0.000      0.000      0.000   0 0 
+    1470 "City of Weiser                  " "CTWS" :      0.000      0.000      0.000      0.000   0 0 
+    1471 "Northern Pacific Paper Corp.    " "NRPC" :      0.000      0.000      0.000      0.000   0 0 
+    1472 "Nippon Dynawave Packaging (NDP) " "NDYP" :      0.000      0.000      0.000      0.000   0 0 
+    1473 "Mckinley Paper Company          " "McKP" :      0.000      0.000      0.000      0.000   0 0 
+    1474 "NewSun Energy Transmission LLC  " "NSET" :      0.000      0.000      0.000      0.000   0 0 
+    1475 "Alder Mutual Light Co.          " "AMLC" :      0.000      0.000      0.000      0.000   0 0 
+    2400 "AES Alamitos LLC                " "AES " :      0.000      0.000      0.000      0.000   0 0 
+    2401 "Bicent Malburg LLC              " "BCML" :      0.000      0.000      0.000      0.000   0 0 
+    2402 "City of Pasadena Water and Power" "CPWP" :      0.000      0.000      0.000      0.000   0 0 
+    2403 "City of Riverside Public Util   " "CRPU" :      0.000      0.000      0.000      0.000   0 0 
+    2404 "Coso Energy Developers          " "COED" :      0.000      0.000      0.000      0.000   0 0 
+    2405 "Coso Finance Partners           " "COFP" :      0.000      0.000      0.000      0.000   0 0 
+    2406 "Coso Power Developers           " "COPD" :      0.000      0.000      0.000      0.000   0 0 
+    2407 "Edison Mission Marketing & Trad " "EMMT" :      0.000      0.000      0.000      0.000   0 0 
+    2408 "EF Oxnard LLC                   " "EFOL" :      0.000      0.000      0.000      0.000   0 0 
+    2409 "El Segundo Power LLC            " "EPL " :      0.000      0.000      0.000      0.000   0 0 
+    2410 "Fountain Valley Power, LLC      " "FVPL" :      0.000      0.000      0.000      0.000   0 0 
+    2411 "Harbor Cogeneration Company, LLC" "HCCL" :      0.000      0.000      0.000      0.000   0 0 
+    2412 "High Desert Power Project, LLC  " "HDPP" :      0.000      0.000      0.000      0.000   0 0 
+    2413 "Indigo Generation, LLC          " "IGL " :      0.000      0.000      0.000      0.000   0 0 
+    2414 "Kern River Cogeneration Co.     " "KRCC" :      0.000      0.000      0.000      0.000   0 0 
+    2415 "Long Beach Generation LLC       " "LBGL" :      0.000      0.000      0.000      0.000   0 0 
+    2416 "Luz Solar partners Ltd          " "LSPL" :      0.000      0.000      0.000      0.000   0 0 
+    2417 "Mojave Cogeneration Co.         " "MCCL" :      0.000      0.000      0.000      0.000   0 0 
+    2418 "Reliant Energy Coolwater        " "REI " :      0.000      0.000      0.000      0.000   0 0 
+    2419 "Sycamore Cogeneration Co.       " "SYCC" :      0.000      0.000      0.000      0.000   0 0 
+    2420 "US Borax and Chemical Corp.     " "UBCC" :      0.000      0.000      0.000      0.000   0 0 
+    2421 "Watson Generation Company       " "WGC " :      0.000      0.000      0.000      0.000   0 0 
+    3000 "City of Pittsburg               " "PPC " :      0.000      0.000      0.000      0.000   0 0 
+    3001 "Placer County Water Agency      " "PCWA" :      0.000      0.000      0.000      0.000   0 0 
+    3002 "S. Feather Water & Power Agency " "SFWP" :      0.000      0.000      0.000      0.000   0 0 
+    3003 "Lassen Municipality Utility Dist" "LMUD" :      0.000      0.000      0.000      0.000   0 0 
+    3004 "Vanderburg Air Force Base (US GO" "VAFB" :      0.000      0.000      0.000      0.000   0 0 
+    3005 "East Bay Municipal Utility Distr" "EBMU" :      0.000      0.000      0.000      0.000   0 0 
+    3006 "Trinity Public Utility District " "TPUD" :      0.000      0.000      0.000      0.000   0 0 
+    3007 "Stanford University             " "STU " :      0.000      0.000      0.000      0.000   0 0 
+    3008 "Panoche Energy Center, LLC      " "PAEC" :      0.000      0.000      0.000      0.000   0 0 
+    3009 "PG&E National Energy Group      " "PNEG" :      0.000      0.000      0.000      0.000   0 0 
+    3010 "PPM Energy                      " "PPME" :      0.000      0.000      0.000      0.000   0 0 
+    3011 "Sundevil Power Holdings, LLC    " "SPH " :      0.000      0.000      0.000      0.000   0 0 
+    3021 "Nextera                         " "NEXT" :      0.000      0.000      0.000      0.000   0 0 
+    3031 "ED2                             " "ED2 " :      0.000      0.000      0.000      0.000   0 0 
+    3033 "ED3                             " "ED3 " :      0.000      0.000      0.000      0.000   0 0 
+    3035 "Abitibi                         " "ABIT" :      0.000      0.000      0.000      0.000   0 0 
+    3041 "Abengoa                         " "ABG " :      0.000      0.000      0.000      0.000   0 0 
+    3130 "City of Shasta Lake             " "CSL " :      0.000      0.000      0.000      0.000   0 0 
+     192 "Gateway Energy Storage, LLC     " "GES " :      0.000      0.000      0.000      0.000   0 0 
+     191 "Drew Solar, LLC                 " "DWS " :      0.000      0.000      0.000      0.000   0 0 
+     190 "Agua Caliente Solar, LLC        " "ACS " :      0.000      0.000      0.000      0.000   0 0 
+     194 "Valley Center ESS, LLC          " "VC  " :      0.000      0.000      0.000      0.000   0 0 
+     193 "LeConte Energy Storage, LLC     " "LCES" :      0.000      0.000      0.000      0.000   0 0 
+     999 "OWNER999                        " "    " :      0.000      0.000      0.000      0.000   0 0 
+    1413 "OWNER1413                       " "    " :      0.000      0.000      0.000      0.000   0 0 
+    1002 "Energia Sierra Juarez, LLC      " "ESJ " :      0.000      0.000      0.000      0.000   0 0 
